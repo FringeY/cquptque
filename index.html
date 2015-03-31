@@ -22,10 +22,10 @@
 			</div>
 			<div class="select cell">
 				<div class="logo"></div>
-				<div class="selectBtn wangluo" data-type="1"></div>
-				<div class="selectBtn chuantong" data-type="2"></div>
 				<div class="selectBtn dangtuan" data-type="3"></div>
 				<div class="selectBtn hexin" data-type="4"></div>
+				<div class="selectBtn chuantong" data-type="2"></div>
+				<div class="selectBtn wangluo" data-type="1"></div>
 			</div>
 			
 		</div>
@@ -125,7 +125,7 @@
 					queText += '<div data-id="3" class="ansBtn off"><i>C:</i></div>';
 					queText += '<div data-id="4" class="ansBtn off"><i>D:</i></div></div>';
 			}
-			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>网络文明</span><span>传统知识</span><span>党团知识</span><span>核心价值观</span><canvas></canvas></div></div><ul class="rankTop" style="display:none"><li class="ranktitle"><span class="rankli">排名</span><span class="rankname">昵称</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li></ul></div>';
+			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识</span><span>网络文明</span><span>核心价值观</span><span>传统文化</span><canvas></canvas></div></div><ul class="rankTop" style="display:none"><li class="ranktitle"><span class="rankli">排名</span><span class="rankname">昵称</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li></ul></div>';
 			$('#contain').append(queText);
 			rankInfo();
 			rankEvent();
@@ -135,7 +135,7 @@
 			$.ajax({
 				type: 'post',
 				url: 'index.php?s=/Home/index/questionApi',
-				data: 'type=getContent&key=86b4359bdfdefb5b21d6260476087062&table_id='+data,
+				data: 'type=getContent&key=86b4359bdfdefb5b21d6260476087062&tableId='+data,
 				success: function(data){
 					$.each(data.data,function(index,element){
 				 	queText += '<div class="anspage cell">';
@@ -145,11 +145,11 @@
 					queText += '<div class="timeline_out">';
 					queText += '<div class="timeline"></div>';
 					queText += '</div></div></div>';
-					queText += '<p class="que" data-id="'+element.qid+'"><i>第'+(index+1)+'题</i>'+element.question+'</p>';
-					queText += '<div data-id="1" class="ansBtn off"><i>A:</i>'+element.ans_A+'</div>';
-					queText += '<div data-id="2" class="ansBtn off"><i>B:</i>'+element.ans_B+'</div>';
-					queText += '<div data-id="3" class="ansBtn off"><i>C:</i>'+element.ans_C+'</div>';
-					queText += '<div data-id="4" class="ansBtn off"><i>D:</i>'+element.ans_D+'</div></div>';
+					queText += '<p class="que" data-id="'+element.qid+'"><i>第'+(index+1)+'题</i> '+element.question+'</p>';
+					queText += '<div data-id="1" class="ansBtn off"><i>A:</i> '+element.ans_A+'</div>';
+					queText += '<div data-id="2" class="ansBtn off"><i>B:</i> '+element.ans_B+'</div>';
+					queText += '<div data-id="3" class="ansBtn off"><i>C:</i> '+element.ans_C+'</div>';
+					queText += '<div data-id="4" class="ansBtn off"><i>D:</i> '+element.ans_D+'</div></div>';
 					});
 					queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>网络文明</span><span>传统知识</span><span>党团知识</span><span>核心价值观</span><canvas></canvas></div></div><ul class="rankTop" style="display:none"><li class="ranktitle"><span class="rankli">排名</span><span class="rankname">昵称</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li></ul></div>';
 					console.log(data);

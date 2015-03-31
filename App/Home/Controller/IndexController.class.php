@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
 	
-	private $queNum = 15;
+	private $queNum = 10;
 	
 	public function index(){
 		
@@ -21,7 +21,7 @@ class IndexController extends Controller {
 		$this->display();
 	}
 	
-    public function setIn($src=''){
+    private function setIn($src=''){
 		
 		$n=4;
 		
@@ -105,7 +105,7 @@ class IndexController extends Controller {
 			&&
 			(I('post.key') == md5('cqupt_question'))  //密文:86b4359bdfdefb5b21d6260476087062
 			&&
-			($table_id = I('post.table_id'))
+			($table_id = I('post.tableId'))
 		){
 			$data = array(
 					'data' => '数据异常',
