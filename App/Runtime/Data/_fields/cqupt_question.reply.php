@@ -1,0 +1,1 @@
+a:6:{i:0;s:5:"wx_id";i:1;s:8:"que_type";i:2;s:8:"rightNum";i:3;s:5:"grade";s:3:"_pk";s:8:"que_type";s:5:"_type";a:4:{s:5:"wx_id";s:11:"varchar(50)";s:8:"que_type";s:6:"int(2)";s:8:"rightNum";s:15:"int(2) unsigned";s:5:"grade";s:15:"int(3) unsigned";}}
