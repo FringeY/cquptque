@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
 	
-	private $queNum = 10;
+	private $queNum = 15;
 	
 	public function index(){
 		
