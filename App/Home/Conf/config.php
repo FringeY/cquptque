@@ -14,7 +14,7 @@ return array(
 	'DB_HOST'               =>  'localhost', // 服务器地址
 	'DB_NAME'               =>  'cqupt_question',    // 数据库名
 	'DB_USER'               =>  'redrock',      // 用户名
-	'DB_PWD'                =>  'cqupt_question',          // 密码
+	'DB_PWD'                =>  'hongyanredrock',          // 密码
 	'DB_PORT'               =>  '3306',        // 端口
 	'DB_FIELDS_CACHE'       =>  true,        // 启用字段缓存
 	
