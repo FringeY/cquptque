@@ -4,15 +4,58 @@ use Think\Controller;
 class IndexController extends Controller {
 	
 	private $queNum = 15;
+	private $acess_token = 'gh_68f0a1ffc303';
+	private $wx_url = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/';
 	
 	public function index(){
+		$openId = I('get.id');
 		
+		$time=time();
+		$str = 'abcdefghijklnmopqrstwvuxyz1234567890ABCDEFGHIJKLNMOPQRSTWVUXYZ';
+		$string='';
+		for($i=0;$i<16;$i++){
+			$num = mt_rand(0,61);
+			$string .= $str[$num];
+		}
+		$secret =sha1(sha1($time).md5($string)."redrock");
+		$web=$this->wx_url.'userInfo';
+		$find=array(
+			'timestamp'=>$time,
+			'string'=>$string,
+			'secret'=>$secret,
+			'token'=>$this->acess_token,
+		);
+		
+		$back = json_decode($this->curl_api($this->wx_url."apiJsTicket",$find),true);
+		
+		$timestamp=time();
+		
+		$str = 'abcdefghijklnmopqrstwvuxyz1234567890ABCDEFGHIJKLNMOPQRSTWVUXYZ';
+		$nonceStr='';
+		for($i=0;$i<16;$i++){
+			$num = mt_rand(0,61);
+			$nonceStr .= $str[$num];
+		}
+		
+		$url ="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		$key ="jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
+		
+		$data['ticket'] =$back['data'];
+		$data['signature'] =sha1($key);
+		$data['timestamp']=$timestamp;
+		$data['nonceStr'] =$nonceStr;
+		
+
 		$this->assign('answerApi_url',U('home/index/answerApi'));
 		$this->assign('on_url',U('public/img/on.png'));
 		$this->assign('questionApi_url',U('home/index/questionApi'));
 		$this->assign('rank_url',U('home/index/rankTop'));
+		$this->assign('openId',$openId);
+		$this->assign('Js',$data);
 		$this->display();
 	}
+	
+	
 	
 	public function rankTop(){
 		$select = D('rank')->field('name')->order('count desc')->limit(5)->select();
@@ -136,7 +179,7 @@ class IndexController extends Controller {
 			&&
 			(I('post.key') == md5('cqupt_question'))  //密文:86b4359bdfdefb5b21d6260476087062
 			&&
-			($content = I('post.content','',''))
+			($content = I('post.content','',false))
 			&&
 			($table_id = I('post.tableId'))
 			&&
@@ -250,8 +293,7 @@ class IndexController extends Controller {
 		$this->ajaxReturn($data);
 	}
 	
-	
-	public function addUser($openId){
+	private function backUserInfo($openId){
 		$time=time();
 		$str = 'abcdefghijklnmopqrstwvuxyz1234567890ABCDEFGHIJKLNMOPQRSTWVUXYZ';
 		$string='';
@@ -260,23 +302,29 @@ class IndexController extends Controller {
 			$string .= $str[$num];
 		}
 		$secret =sha1(sha1($time).md5($string)."redrock");
-		$web='http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/userInfo';
+		$web=$this->wx_url.'userInfo';
 		$data=array(
 			'timestamp'=>$time,
 			'string'=>$string,
 			'secret'=>$secret,
-			'token'=>'gh_68f0a1ffc303',
+			'token'=>$this->acess_token,
 			'openid'=>$openId,
 		);
 		$information=$this->curl_api($web,$data);
 		
 		$tmp = json_decode($information,true);
+		return $tmp;
+	}
+	
+	public function addUser($openId){
+		$tmp=$this->backAppInfo($openId);
 		$add = array(
 			'wx_id'=>$tmp['data']['openid'],
 			'name'=>$tmp['data']['nickname'],
 			'img_src'=>$tmp['data']['headimgurl'],
 			'sex'=>$tmp['data']['sex'],
 		);
+		
 		D('wx_user')->add($add);
 	}
 	

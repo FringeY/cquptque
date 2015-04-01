@@ -4,13 +4,14 @@
 	<meta charset="utf-8" />
 	<title>重邮知多少</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,maximum-scale=1.0" />
-	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index.css">
+	<script src="__PUBLIC__/js/weixin.js"></script>	
 </head>
 <body>
 	<div id="point">
 		<div></div>
 	</div>
+	<div style="display:none;background:url(__PUBLIC__/img/back.png)"></div>
 	<div id="out">
 		<div id="contain">
 			<div class="begin cell">
@@ -21,6 +22,7 @@
 				<div class="on"></div>
 			</div>
 			<div class="select cell">
+				<div class="goback"></div>
 				<div class="logo"></div>
 				<div class="selectBtn dangtuan" data-type="3"></div>
 				<div class="selectBtn hexin" data-type="4"></div>
@@ -31,11 +33,11 @@
 		</div>
 	</div>	
 </body>
-<script src="js/zepto.min.js"></script>
+<script src="__PUBLIC__/js/zepto.min.js"></script>
 <script type="text/javascript">
 	var name = "姓名";
 	var table_id = "";
-	var openId = "ouRCyjhbyphqHJ0P_pa8wvhmEJ9A";
+	var openId = "{$openId}";//ouRCyjhbyphqHJ0P_pa8wvhmEJ9A
 	var winWidth = $(window).width(); //屏幕宽度
 	var running = false;//动画是否进行
 	var pagenum = 0; //页面位置
@@ -54,10 +56,6 @@
 			move();
 		}
 	});
-	//again
-	$('.again').on('touchend',function(){
-		window.location.href = window.location.href;
-	})
 	//倒计时
 	function time(){
 		$('.timeline').eq(pagenum-2).css({'-webkit-animation':'timeline 15s','animation':'timeline 15s','-o-animation':'timeline 15s','-moz-animation':'timeline 15s'});
@@ -87,16 +85,23 @@
 	//move
 	function move(){
 		var winLeft = -winWidth*(pagenum+1);
-		$('#contain').css({'-webkit-animation':'move' + animateNum[pagenum] + ' 0.5s','animation':'move' + animateNum[pagenum] + ' 0.5s','-o-animation':'move' + animateNum[pagenum] + ' 0.5s','-moz-animation':'move' + animateNum[pagenum] + ' 0.5s'});
-		pagenum++;
-		running = true;
-		timer = setTimeout(function(){
-			$('#contain').css('left',winLeft + 'px');	
-			running = false;
-			if(pagenum > 1 && pagenum < 17){
-				time();
-			}
-		},500);
+		if(pagenum==0){
+			pagenum++;
+			$('#contain').css({'left':winLeft + 'px'});
+			$('#out').css({'background':'url(__PUBLIC__/img/back.png)','background-size':'100% 100%'});
+		}else{
+			$('#contain').css({'-webkit-animation':'move' + animateNum[pagenum] + ' 0.5s','animation':'move' + animateNum[pagenum] + ' 0.5s','-o-animation':'move' + animateNum[pagenum] + ' 0.5s','-moz-animation':'move' + animateNum[pagenum] + ' 0.5s'});
+			pagenum++;
+			running = true;
+			timer = setTimeout(function(){
+				$('#contain').css('left',winLeft + 'px');	
+				running = false;
+				if(pagenum > 1 && pagenum < 17){
+					time();
+				}
+			},500);
+		}
+		
 		//console.log(pagenum);
 	};
 	//selectBtn
@@ -108,6 +113,14 @@
 			clearInterval(timer);
 		}
 	});
+	//返回首页
+	$('.goback').on('touchend',function(){
+		if (!running) {
+			pagenum = 0;
+			$('#contain').css('left','0px');
+			$('#out').css({'background':'url(__PUBLIC__/img/indexbc.png)','background-size':'100% 100%'});
+		};
+	})
 	//渲染
 	function view(data){
 		if(data == '5'){
@@ -295,7 +308,10 @@
 	function rankEvent(){
 		//share
 		$('.share').on('touchend',function(){
-			alert(1);
+			$('#point').css('display','block');
+		});
+		$('#point').on('touchend',function(){
+			$('#point').css('display','none');
 		});
 		//rank
 		$('.rank').on('touchend',function(){
@@ -358,54 +374,58 @@
 	    	}
 	    	
 	    });
+	    //again
+		$('.again').on('touchend',function(){
+			window.location.href = window.location.href;
+		})
 	};
     rankEvent();
     //微信
- //    wx.config({
-	//     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-	//     appId: 'wx81a4a4b77ec98ff4', // 必填，公众号的唯一标识
-	//     timestamp: '', // 必填，生成签名的时间戳
-	//     nonceStr: '', // 必填，生成签名的随机串
-	//     signature: '',// 必填，签名，见附录1
-	//     jsApiList: [
-	//     	'onMenuShareTimeline',
-	//     	'onMenuShareAppMessage',
-	//     	'hideMenuItems'
-	//     ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-	// });
-	// wx.ready(function(){
-	// 	wx.hideMenuItems({
-	// 	    menuList: [
-	// 	    	 "menuItem:copyUrl",
-	// 	    	 "menuItem:originPage"
-	// 	    ]
-	// 	});
-	// });
- //    wx.onMenuShareTimeline({
-	//     title: '重邮问问答', // 分享标题
-	//     link: window.location.href, // 分享链接
-	//     imgUrl: 'img/logo.png', // 分享图标
-	//     success: function () { 
-	//         // 用户确认分享后执行的回调函数
-	//     },
-	//     cancel: function () { 
-	//         // 用户取消分享后执行的回调函数
-	//     }
-	// });
-	// wx.onMenuShareAppMessage({
-	//     title: '重邮问问答', // 分享标题
-	//     desc: '重邮问问答', // 分享描述
-	//     link: window.location.href, // 分享链接
-	//     imgUrl: 'img/logo.png', // 分享图标
-	//     type: 'link', // 分享类型,music、video或link，不填默认为link
-	//     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-	//     success: function () { 
-	//         // 用户确认分享后执行的回调函数
-	//     },
-	//     cancel: function () { 
-	//         // 用户取消分享后执行的回调函数
-	//     }
-	// });
+    wx.config({
+	    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	    appId: 'wx81a4a4b77ec98ff4', // 必填，公众号的唯一标识
+	    timestamp: '{Js.timestamp}', // 必填，生成签名的时间戳
+	    nonceStr: '{Js.nonceStr}', // 必填，生成签名的随机串
+	    signature: '{Js.signature}',// 必填，签名，见附录1
+	    jsApiList: [
+	    	'onMenuShareTimeline',
+	    	'onMenuShareAppMessage',
+	    	'hideMenuItems'
+	    ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+	});
+	wx.ready(function(){
+		wx.hideMenuItems({
+		    menuList: [
+		    	 "menuItem:copyUrl",
+		    	 "menuItem:originPage"
+		    ]
+		});
+	});
+    wx.onMenuShareTimeline({
+	    title: '重邮问问答', // 分享标题
+	    link: window.location.href, // 分享链接
+	    imgUrl: 'img/logo.png', // 分享图标
+	    success: function () { 
+	        // 用户确认分享后执行的回调函数
+	    },
+	    cancel: function () { 
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
+	wx.onMenuShareAppMessage({
+	    title: '重邮问问答', // 分享标题
+	    desc: '重邮问问答', // 分享描述
+	    link: window.location.href, // 分享链接
+	    imgUrl: 'img/logo.png', // 分享图标
+	    type: 'link', // 分享类型,music、video或link，不填默认为link
+	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+	    success: function () { 
+	        // 用户确认分享后执行的回调函数
+	    },
+	    cancel: function () { 
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
 
 // 	//
 // 	$('.share').on('touchend',function(){

@@ -5,7 +5,7 @@
 	<title>重邮知多少</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,maximum-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>	
+	 <!--<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->	
 </head>
 <body>
 	<div id="point">
@@ -21,6 +21,7 @@
 				<div class="on"></div>
 			</div>
 			<div class="select cell">
+				<div class="goback"></div>
 				<div class="logo"></div>
 				<div class="selectBtn dangtuan" data-type="3"></div>
 				<div class="selectBtn hexin" data-type="4"></div>
@@ -87,27 +88,40 @@
 	//move
 	function move(){
 		var winLeft = -winWidth*(pagenum+1);
-		$('#contain').css({'-webkit-animation':'move' + animateNum[pagenum] + ' 0.5s','animation':'move' + animateNum[pagenum] + ' 0.5s','-o-animation':'move' + animateNum[pagenum] + ' 0.5s','-moz-animation':'move' + animateNum[pagenum] + ' 0.5s'});
-		pagenum++;
-		running = true;
-		timer = setTimeout(function(){
-			$('#contain').css('left',winLeft + 'px');	
-			running = false;
-			if(pagenum > 1 && pagenum < 17){
-				time();
-			}
-		},500);
+		if(pagenum==0){
+			pagenum++;
+			$('#contain').css({'left':winLeft + 'px'});
+			$('#out').css({'background':'url(img/back.png)','background-size':'100% 100%'});
+		}else{
+			$('#contain').css({'-webkit-animation':'move' + animateNum[pagenum] + ' 0.5s','animation':'move' + animateNum[pagenum] + ' 0.5s','-o-animation':'move' + animateNum[pagenum] + ' 0.5s','-moz-animation':'move' + animateNum[pagenum] + ' 0.5s'});
+			pagenum++;
+			running = true;
+			timer = setTimeout(function(){
+				$('#contain').css('left',winLeft + 'px');	
+				running = false;
+				if(pagenum > 1 && pagenum < 17){
+					time();
+				}
+			},500);
+		}
+		
 		//console.log(pagenum);
 	};
 	//selectBtn
 	$('.selectBtn').on('touchend',function(){
-		if(!running){
 			var type = $(this).data('type');
 			table_id = type;
 			view(type);
 			clearInterval(timer);
-		}
 	});
+	//返回首页
+	$('.goback').on('touchend',function(){
+		if (!running) {
+			pagenum = 0;
+			$('#contain').css('left','0px');
+			$('#out').css({'background':'url(img/indexbc.png)','background-size':'100% 100%'});
+		};
+	})
 	//渲染
 	function view(data){
 		if(data == '5'){
@@ -198,7 +212,7 @@
 			url: 'index.php?s=/Home/index/answerApi',
 			data: 'type=getGrade&key=86b4359bdfdefb5b21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId,
 			success: function(data){
-				console.log(data);
+				
 				$('.endRank').html(data.rank);
 				$('.endScore').html(data.grade);
 				$('.trueNum').html(data.num);
@@ -295,7 +309,10 @@
 	function rankEvent(){
 		//share
 		$('.share').on('touchend',function(){
-			alert(1);
+			$('#point').css('display','block');
+		});
+		$('#point').on('touchend',function(){
+			$('#point').css('display','none');
 		});
 		//rank
 		$('.rank').on('touchend',function(){
