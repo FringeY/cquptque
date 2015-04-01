@@ -27,7 +27,7 @@ class IndexController extends Controller {
 		);
 		
 		$back = json_decode($this->curl_api($this->wx_url."apiJsTicket",$find),true);
-		
+		$ticket = back['data'];
 		$timestamp=time();
 		
 		$str = 'abcdefghijklnmopqrstwvuxyz1234567890ABCDEFGHIJKLNMOPQRSTWVUXYZ';
