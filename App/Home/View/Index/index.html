@@ -125,7 +125,7 @@
 					queText += '<div data-id="3" class="ansBtn off"><i>C:</i></div>';
 					queText += '<div data-id="4" class="ansBtn off"><i>D:</i></div></div>';
 			}
-			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识</span><span>网络文明</span><span>核心价值观</span><span>传统文化</span><canvas></canvas></div></div><ul class="rankTop" style="display:none"><li class="ranktitle"><span class="rankli">排名</span><span class="rankname">昵称</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li></ul></div>';
+			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
 			$('#contain').append(queText);
 			rankInfo();
 			rankEvent();
@@ -151,13 +151,12 @@
 					queText += '<div data-id="3" class="ansBtn off"><i>C:</i> '+element.ans_C+'</div>';
 					queText += '<div data-id="4" class="ansBtn off"><i>D:</i> '+element.ans_D+'</div></div>';
 					});
-					queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>网络文明</span><span>传统知识</span><span>党团知识</span><span>核心价值观</span><canvas></canvas></div></div><ul class="rankTop" style="display:none"><li class="ranktitle"><span class="rankli">排名</span><span class="rankname">昵称</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li><li><span class="rankli">排名</span><span class="rankname">姓名</span><span class="rankscore">总分</span></li></ul></div>';
+					queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum"></span>道题</h2><h2>获得<span class="endScore"></span>分</h2><h3>当前模式排名<span class="endRank"></span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
 					console.log(data);
 					$('#contain').append(queText);
 					rankInfo();
 					rankEvent();
 					$('.cell').css({'width':$('#out').width()+'px'});
-					
 					//ans
 					$('.ansBtn').on('touchend',function(){		
 						if(!running){
@@ -174,7 +173,7 @@
 							pushData.push(data);
 							last = 0;
 							if(pagenum == 16){
-								alert(1);
+								
 								upAns();
 							}else{
 								move();
@@ -197,9 +196,12 @@
 		$.ajax({
 			type: 'post',
 			url: 'index.php?s=/Home/index/answerApi',
-			data: 'type=getGrade&key=dfdefb586b4359bb21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId,
+			data: 'type=getGrade&key=86b4359bdfdefb5b21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId,
 			success: function(data){
 				console.log(data);
+				$('.endRank').html(data.rank);
+				$('.endScore').html(data.grade);
+				$('.trueNum').html(data.num);
 				move();
 			},
 			error: function(data){
@@ -209,27 +211,51 @@
 	}
 	//排行榜及个人信息
 	function rankInfo(){
-		draw();
+		//draw();
 		$.ajax({
 			type: 'post',
-			url: '',
-			data: '',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=rankAll',
 			success: function(data){
-				$('.head').css({'background-image':'url()','background-size':'100% 100%'});
-				$('.name').html(name);
+				console.log(data);
+				var rankList = '';
+				rankList += '<li class="ranktitle"><span class="rankli">排名</span><span class="rankname">昵称</span><span class="rankscore">总分</span></li>';
+				$.each(data.data,function(index,element){
+					rankList += '<li><span class="rankli">'+(index+1)+'</span><span class="rankname">'+element.name+'</span><span class="rankscore">'+element.avgGrade+'</span></li>';
+				});
+				$('.rankTop').html(rankList);
 				// $('.rankTop');
 				// $('.info');
 			},
 			error: function(data){
 				alert('提交失败');
 			}
-		})
+		});
+		$.ajax({
+			type: 'post',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
+			success: function(data){
+				console.log(data);
+				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
+				$('.name').html(data.userInfo.name);
+				$('.honor').html('头&nbsp;&nbsp;&nbsp;&nbsp;衔：'+data.userInfo.honor);
+				$('.rate').html('正确率：'+data.userInfo.rate+'%');
+				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
+				draw(data.data[0],data.data[1],data.data[2],data.data[3])
+				// $('.rankTop');
+				// $('.info');
+			},
+			error: function(data){
+				alert('提交失败');
+			}
+		});
 	}
 	
 	//
-	function draw(){
+	function draw(queA,queB,queC,queD){
 		var canvas = document.getElementsByTagName('canvas')[0];
-		var back = $('.four')
+		var back = $('.four');
 		var cwidth = back.width();
 		canvas.setAttribute('width',cwidth);
 		var cheight = back.height();
@@ -238,10 +264,10 @@
 		ctx.beginPath();
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
-	    ctx.moveTo(cwidth/2,cheight/2-100);
-	    ctx.lineTo(cwidth/2+100,cheight/2);
-	    ctx.lineTo(cwidth/2,cheight/2+100);
-	    ctx.lineTo(cwidth/2-100,cheight/2);
+	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*(15-queC.rightNum)/15);
+	    ctx.lineTo(cwidth/2+cwidth/2*(queA.rightNum)/15,cheight/2);
+	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*(queD.rightNum)/15);
+	    ctx.lineTo(cwidth/2-cwidth/2*(15-queB.rightNum)/15,cheight/2);
 	    
 	    ctx.strokeStyle = "#fff";
 	    ctx.moveTo(0,cheight/2);
@@ -257,10 +283,14 @@
 	    ctx.fill();
 
 	    var size = parseInt($('.four span').css('font-size'));
-		    $('.four span').eq(0).css({'left':cwidth/2-2*size+'px','top':'-1em'});
+		    $('.four span').eq(0).css({'left':cwidth/2-2*size+'px','top':'-2em'});
+		    $('.four span').eq(0).find('h4').html('('+queC.rightNum+')');
 		    $('.four span').eq(1).css({'right':'-3em','top':cheight/2-size+'px'});
-		    $('.four span').eq(2).css({'left':cwidth/2-2*size+'px','top':cheight+'px'});
+		    $('.four span').eq(1).find('h4').html('('+queA.rightNum+')');
+		    $('.four span').eq(2).css({'left':cwidth/2-2.5*size+'px','top':cheight+'px'});
+		    $('.four span').eq(2).find('h4').html('('+queD.rightNum+')');
 		    $('.four span').eq(3).css({'left':'-3em','top':cheight/2-size+'px'});
+		    $('.four span').eq(3).find('h4').html('('+queB.rightNum+')');
 	}
 	function rankEvent(){
 		//share
@@ -269,12 +299,15 @@
 		});
 		//rank
 		$('.rank').on('touchend',function(){
-			view('5');
+			if(pagenum==0){
+				view('5');
+			}
 			pagenum = 18;
 			var winLeft = -winWidth*pagenum;
 			$('#contain').css('left',winLeft + 'px');
 			$('.allrank').trigger('touchend');
 		});
+
 		$('.info').on('touchend',function(){
 			view('5');
 			pagenum = 18;
@@ -294,6 +327,19 @@
 				$('.hrank_on').attr('class','allrank hrank');
 				$('.info').css('display','block');
 				$('.rankTop').css('display','none');
+				$.ajax({
+					type: 'post',
+					url: 'index.php?s=/Home/index/userInfo',
+					data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
+					success: function(data){
+						draw(data.data[0],data.data[1],data.data[2],data.data[3])
+						// $('.rankTop');
+						// $('.info');
+					},
+					error: function(data){
+						alert('提交失败');
+					}
+				});
 	    	}
 	    });
 	    //rank
@@ -315,51 +361,51 @@
 	};
     rankEvent();
     //微信
-    wx.config({
-	    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-	    appId: '', // 必填，公众号的唯一标识
-	    timestamp: '', // 必填，生成签名的时间戳
-	    nonceStr: '', // 必填，生成签名的随机串
-	    signature: '',// 必填，签名，见附录1
-	    jsApiList: [
-	    	'onMenuShareTimeline',
-	    	'onMenuShareAppMessage',
-	    	'hideMenuItems'
-	    ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-	});
-	wx.ready(function(){
-		wx.hideMenuItems({
-		    menuList: [
-		    	 "menuItem:copyUrl",
-		    	 "menuItem:originPage"
-		    ]
-		});
-	});
-    wx.onMenuShareTimeline({
-	    title: '重邮问问答', // 分享标题
-	    link: window.location.href, // 分享链接
-	    imgUrl: 'img/logo.png', // 分享图标
-	    success: function () { 
-	        // 用户确认分享后执行的回调函数
-	    },
-	    cancel: function () { 
-	        // 用户取消分享后执行的回调函数
-	    }
-	});
-	wx.onMenuShareAppMessage({
-	    title: '重邮问问答', // 分享标题
-	    desc: '重邮问问答', // 分享描述
-	    link: window.location.href, // 分享链接
-	    imgUrl: 'img/logo.png', // 分享图标
-	    type: 'link', // 分享类型,music、video或link，不填默认为link
-	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-	    success: function () { 
-	        // 用户确认分享后执行的回调函数
-	    },
-	    cancel: function () { 
-	        // 用户取消分享后执行的回调函数
-	    }
-	});
+ //    wx.config({
+	//     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	//     appId: 'wx81a4a4b77ec98ff4', // 必填，公众号的唯一标识
+	//     timestamp: '', // 必填，生成签名的时间戳
+	//     nonceStr: '', // 必填，生成签名的随机串
+	//     signature: '',// 必填，签名，见附录1
+	//     jsApiList: [
+	//     	'onMenuShareTimeline',
+	//     	'onMenuShareAppMessage',
+	//     	'hideMenuItems'
+	//     ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+	// });
+	// wx.ready(function(){
+	// 	wx.hideMenuItems({
+	// 	    menuList: [
+	// 	    	 "menuItem:copyUrl",
+	// 	    	 "menuItem:originPage"
+	// 	    ]
+	// 	});
+	// });
+ //    wx.onMenuShareTimeline({
+	//     title: '重邮问问答', // 分享标题
+	//     link: window.location.href, // 分享链接
+	//     imgUrl: 'img/logo.png', // 分享图标
+	//     success: function () { 
+	//         // 用户确认分享后执行的回调函数
+	//     },
+	//     cancel: function () { 
+	//         // 用户取消分享后执行的回调函数
+	//     }
+	// });
+	// wx.onMenuShareAppMessage({
+	//     title: '重邮问问答', // 分享标题
+	//     desc: '重邮问问答', // 分享描述
+	//     link: window.location.href, // 分享链接
+	//     imgUrl: 'img/logo.png', // 分享图标
+	//     type: 'link', // 分享类型,music、video或link，不填默认为link
+	//     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+	//     success: function () { 
+	//         // 用户确认分享后执行的回调函数
+	//     },
+	//     cancel: function () { 
+	//         // 用户取消分享后执行的回调函数
+	//     }
+	// });
 
 // 	//
 // 	$('.share').on('touchend',function(){

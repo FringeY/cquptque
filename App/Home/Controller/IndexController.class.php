@@ -151,7 +151,7 @@ class IndexController extends Controller {
 			/*计算正确数和成绩*/
 			$count = 0;
 			$all=count($arr);
-			if($all!=10){
+			if($all!=$this->queNum){
 				$this->ajaxReturn($data);
 				exit();
 			}
@@ -163,7 +163,7 @@ class IndexController extends Controller {
 				unset($value['costTime']);
 				
 				if($db->where($value)->find()){
-					$grade += (!($theTime>=15||$theTime<1))
+					$grade += (!($theTime>=15))
 								?((15-$theTime)/15*24)
 								:0;
 					$count++;
@@ -209,6 +209,7 @@ class IndexController extends Controller {
 			}
 			
 			/*跟新用户总成绩*/
+
 			$replyData = D('reply')->where("wx_id='$openId'")->select();
 			$n = count($replyData);
 			$wx_user_grade=0;
@@ -227,11 +228,13 @@ class IndexController extends Controller {
 			D('wx_user')->where("wx_id='$openId'")->save($save);
 			
 			/*回复称号*/
+
 			if($all==$this->queNum){	
 				$rankNum = D('reply')->where("grade>$grade and que_type=$table_id")->count();			
 				$data = array(
 						'rank' => $rankNum+1,
 						'grade' => $grade,
+						'num' => $count,
 						'status' => 200
 				);
 			}else{
