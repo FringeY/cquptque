@@ -274,7 +274,6 @@
 		var canvas = document.getElementById('canvas');
 		var back = $('.four');
 		var cwidth = back.width();
-		alert(queC.rightNum);
 		canvas.setAttribute('width',cwidth);
 		var cheight = back.height();
 		canvas.setAttribute('height',cheight);
@@ -297,7 +296,6 @@
 	    ctx.closePath();
 	    ctx.stroke();
 	    ctx.fill();
-	    alert(4);
 	    var size = parseInt($('.four span').css('font-size'));
 		    $('.four span').eq(0).css({'left':cwidth/2-2*size+'px','top':'-2em'});
 		    $('.four span').eq(0).find('h4').html('('+queC+')');
