@@ -390,12 +390,15 @@ class IndexController extends Controller {
 				    
 						unset($data['data']);
 						$data['status']=200;
-						
+
 						foreach ($tmp as $key => $value) {
 							if($value){
 								$data['data'][] = $value;
 							}else{
-								
+								$kong['grade'] = "0";
+								$kong['que_type'] = $i+1;
+								$kong['rightNum'] = "0";	
+								$data['data'][] = $kong;
 							}
 						}
 						
