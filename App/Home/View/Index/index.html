@@ -282,14 +282,17 @@
 			success: function(data){
 				console.log(data);
 				//alert(data.queB.rightNum);
-				//queA = data.queA.rightNum;
+				queA = data.data[0].rightNum;
+				queB = data.data[1].rightNum;
+				queC = data.data[2].rightNum;
+				queD = data.data[3].rightNum;
 				$('.four span').eq(1).find('h4').html('('+data.data[1].rightNum+')');
 				//queB = data.queB.rightNum;
 				$('.four span').eq(3).find('h4').html('('+data.data[3].rightNum+')');
 				$('.four span').eq(0).find('h4').html('('+data.data[0].rightNum+')');
 				//queD = data.queD.rightNum;
 				$('.four span').eq(2).find('h4').html('('+data.data[2].rightNum+')');
-				draw(data.data[1].rightNum,data.data[0].rightNum,data.data[3].rightNum,data.data[2].rightNum);
+				draw(queB,queA,queD,queC);
 				// $('.rankTop');
 				// $('.info');
 			},
