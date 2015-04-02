@@ -57,6 +57,8 @@ class IndexController extends Controller {
 		); 
 		
 		$oa = json_decode($this->curl_api($url2,$t2),true);//new
+		print_r($oa);
+		exit();
 		$this->newUser($oa['data']['openId'],$oa);
 		
 		$back = json_decode($this->curl_api($this->wx_url."apiJsTicket",$find),true);
@@ -351,7 +353,7 @@ class IndexController extends Controller {
 		$tmp = json_decode($information,true);
 		return $tmp;
 	}
-	
+
 	public function addUser($openId){
 		$tmp=$this->backUserInfo($openId);
 		$add = array(
