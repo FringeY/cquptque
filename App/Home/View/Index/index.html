@@ -270,15 +270,14 @@
 		var canvas = document.getElementById('canvas');
 		var back = $('.four');
 		var cwidth = back.width();
+		alert(queC.rightNum);
 		canvas.setAttribute('width',cwidth);
 		var cheight = back.height();
 		canvas.setAttribute('height',cheight);
 		var ctx = canvas.getContext("2d");;
-		alert(ctx);
 		ctx.beginPath();
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
-		alert(2);
 		alert(cwidth);
 		alert(queC.rightNum);
 		alert(cheight/2-cwidth/2*parseInt(queC.rightNum)/15);
