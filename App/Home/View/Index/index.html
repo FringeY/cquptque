@@ -302,8 +302,9 @@
 		var cheight = back.height();
 		canvas.setAttribute('height',cheight);
 		var ctx = canvas.getContext("2d");
-		ctx.clearRect(0,0,cwidth,cheight);
+		
 		ctx.beginPath();
+		ctx.clearRect(0,0,cwidth,cheight);
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
 	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queA/15*9/10-1);
