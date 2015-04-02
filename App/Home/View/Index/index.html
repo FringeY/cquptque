@@ -250,7 +250,7 @@
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
-				var imgSrc = data.userInfo.img_src.substr(0,data.userInfo.img_src.length-1)+'64';
+				var imgSrc = data.userInfo.img_src.substr(0,data.userInfo.img_src.length-1)+'96';
 				$('.head').css({'background-image':'url('+imgSrc+')','background-size':'100% 100%'});
 				
 				$('.name').html(data.userInfo.name);
