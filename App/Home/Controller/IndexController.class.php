@@ -391,7 +391,7 @@ class IndexController extends Controller {
 						unset($data['data']);
 						$data['status']=200;
 						if($tmp){
-							$data['que'] = $tmp
+							$data['que'] = $tmp;
 						}else{
 							$data['que']['grade'] = "0";
 							$data['que']['que_type'] = "1";
@@ -411,7 +411,7 @@ class IndexController extends Controller {
 						unset($data['data']);
 						$data['status']=200;
 						if($tmp){
-							$data['que'] = $tmp
+							$data['que'] = $tmp;
 						}else{
 							$data['que']['grade'] = "0";
 							$data['que']['que_type'] = "2";
@@ -430,7 +430,7 @@ class IndexController extends Controller {
 						unset($data['data']);
 						$data['status']=200;
 						if($tmp){
-							$data['que'] = $tmp
+							$data['que'] = $tmp;
 						}else{
 							$data['que']['grade'] = "0";
 							$data['que']['que_type'] = "3";
@@ -449,7 +449,7 @@ class IndexController extends Controller {
 						unset($data['data']);
 						$data['status']=200;
 						if($tmp){
-							$data['que'] = $tmp
+							$data['que'] = $tmp;
 						}else{
 							$data['que']['grade'] = "0";
 							$data['que']['que_type'] = "4";
