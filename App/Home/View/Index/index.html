@@ -185,6 +185,7 @@
 							data.costTime = ''+last;
 							pushData.push(data);
 							last = 0;
+							$(this).parent().find('.ansBtn').unbind('trigger');
 							if(pagenum == 16){
 								upAns();
 							}else{
