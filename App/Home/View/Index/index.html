@@ -24,10 +24,10 @@
 			<div class="select cell">
 				<div class="goback"></div>
 				<div class="logo"></div>
-				<div class="selectBtn dangtuan" data-type="3"></div>
-				<div class="selectBtn hexin" data-type="4"></div>
-				<div class="selectBtn chuantong" data-type="2"></div>
-				<div class="selectBtn wangluo" data-type="1"></div>
+				<div class="selectBtn dangtuan" data-type="4"></div>
+				<div class="selectBtn hexin" data-type="3"></div>
+				<div class="selectBtn chuantong" data-type="1"></div>
+				<div class="selectBtn wangluo" data-type="2"></div>
 			</div>
 			
 		</div>
@@ -251,8 +251,11 @@
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
+				if(data.queD.rightNum){
+					alert(1);
+				}
 				//queA = data.queA.rightNum;
-				$('.four span').eq(1).find('h4').html('('+data.queA.rightNum+')');
+				$('.four span').eq(1).find('h4').html('('+data.queB.rightNum+')');
 				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
 				
 				$('.name').html(data.userInfo.name);
@@ -262,11 +265,11 @@
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
 				//queB = data.queB.rightNum;
-				$('.four span').eq(3).find('h4').html('('+data.queB.rightNum+')');
-				$('.four span').eq(0).find('h4').html('('+data.queC.rightNum+')');
+				$('.four span').eq(3).find('h4').html('('+data.queA.rightNum+')');
+				$('.four span').eq(0).find('h4').html('('+data.queD.rightNum+')');
 				//queD = data.queD.rightNum;
-				$('.four span').eq(2).find('h4').html('('+data.queD.rightNum+')');
-				draw(queA,queB,queC,queD);
+				$('.four span').eq(2).find('h4').html('('+data.queC.rightNum+')');
+				//draw(queB,queA,queD,queC);
 				// $('.rankTop');
 				// $('.info');
 			},
