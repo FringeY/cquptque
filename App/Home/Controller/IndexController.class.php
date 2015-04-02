@@ -379,14 +379,14 @@ class IndexController extends Controller {
 					);
 					break;
 
-				case 'four':
+				case 'one':
 					if(D('wx_user')->where("wx_id='$openId'")->find()){
 						
 					}else{
 						$data['add']=true;
 						$this->addUser($openId);
 					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId'")->select();
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=1")->find();
 				    
 						unset($data['data']);
 						$data['status']=200;
@@ -401,6 +401,68 @@ class IndexController extends Controller {
 								$data['queD'] = $value;
 							}
 						}
+					break;
+				case 'one':
+					if(D('wx_user')->where("wx_id='$openId'")->find()){
+						
+					}else{
+						$data['add']=true;
+						$this->addUser($openId);
+					}
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=1")->find();
+				    
+						unset($data['data']);
+						$data['status']=200;
+						foreach($tmp as $key => $value){
+							if($key == 0){
+								$data['queA'] = $value;
+							}else if($key == 1){
+								$data['queB'] = $value;
+							}else if($key == 2){
+								$data['queC'] = $value;
+							}else{
+								$data['queD'] = $value;
+							}
+						}
+					break;
+				case 'two':
+					if(D('wx_user')->where("wx_id='$openId'")->find()){
+						
+					}else{
+						$data['add']=true;
+						$this->addUser($openId);
+					}
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=2")->find();
+				    
+						unset($data['data']);
+						$data['status']=200;
+						$data['que'] = $tmp;
+					break;
+				case 'three':
+					if(D('wx_user')->where("wx_id='$openId'")->find()){
+						
+					}else{
+						$data['add']=true;
+						$this->addUser($openId);
+					}
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=3")->find();
+				    
+						unset($data['data']);
+						$data['status']=200;
+						$data['que'] = $tmp;
+					break;
+				case 'four':
+					if(D('wx_user')->where("wx_id='$openId'")->find()){
+						
+					}else{
+						$data['add']=true;
+						$this->addUser($openId);
+					}
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=4")->find();
+				    
+						unset($data['data']);
+						$data['status']=200;
+						$data['que'] = $tmp;
 					break;
 				case 'userInfo':
 					if(D('wx_user')->where("wx_id='$openId'")->find()){

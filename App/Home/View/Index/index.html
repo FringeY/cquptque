@@ -278,20 +278,60 @@
 		$.ajax({
 			type: 'post',
 			url: 'index.php?s=/Home/index/userInfo',
-			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=four',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=one',
 			success: function(data){
 				console.log(data);
-				alert(data.queB.rightNum);
+				//alert(data.queB.rightNum);
 				//queA = data.queA.rightNum;
-				$('.four span').eq(1).find('h4').html('('+data.queB.rightNum+')');
+				//$('.four span').eq(1).find('h4').html('('+data.queB.rightNum+')');
 				//queB = data.queB.rightNum;
-				$('.four span').eq(3).find('h4').html('('+data.queA.rightNum+')');
+				//$('.four span').eq(3).find('h4').html('('+data.queA.rightNum+')');
 				$('.four span').eq(0).find('h4').html('('+data.queD.rightNum+')');
 				//queD = data.queD.rightNum;
-				$('.four span').eq(2).find('h4').html('('+data.queC.rightNum+')');
+				//$('.four span').eq(2).find('h4').html('('+data.queC.rightNum+')');
 				//draw(queB,queA,queD,queC);
 				// $('.rankTop');
 				// $('.info');
+			},
+			error: function(data){
+				alert('提交失败');
+			}
+		});
+		$.ajax({
+			type: 'post',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=two',
+			success: function(data){
+				console.log(data);
+				alert(data.queB.rightNum);
+				$('.four span').eq(1).find('h4').html('('+data.queB.rightNum+')');
+				
+			},
+			error: function(data){
+				alert('提交失败');
+			}
+		});
+		$.ajax({
+			type: 'post',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=three',
+			success: function(data){
+				console.log(data);				
+				$('.four span').eq(2).find('h4').html('('+data.queC.rightNum+')');
+				
+			},
+			error: function(data){
+				alert('提交失败');
+			}
+		});
+		$.ajax({
+			type: 'post',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=four',
+			success: function(data){
+				console.log(data);				
+				$('.four span').eq(3).find('h4').html('('+data.queA.rightNum+')');
+				
 			},
 			error: function(data){
 				alert('提交失败');
