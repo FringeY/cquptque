@@ -394,7 +394,7 @@ class IndexController extends Controller {
 							$data['que'] = $tmp;
 						}else{
 							$data['que'] = $tmp;
-							$data['que']['rightNum'] = '0';	
+							$data['que']['rightNum'] = '1';	
 						}
 						
 					break;
@@ -413,7 +413,7 @@ class IndexController extends Controller {
 							$data['que'] = $tmp;
 						}else{
 							$data['que'] = $tmp;
-							$data['que']['rightNum'] = '0';	
+							$data['que']['rightNum'] = '1';	
 						}
 					break;
 				case 'three':
@@ -431,7 +431,7 @@ class IndexController extends Controller {
 							$data['que'] = $tmp;
 						}else{
 							$data['que'] = $tmp;
-							$data['que']['rightNum'] = '0';	
+							$data['que']['rightNum'] = '1';	
 						}
 					break;
 				case 'four':
@@ -449,7 +449,7 @@ class IndexController extends Controller {
 							$data['que'] = $tmp;
 						}else{
 							$data['que'] = $tmp;
-							$data['que']['rightNum'] = '0';	
+							$data['que']['rightNum'] = '1';	
 						}
 					break;
 				case 'userInfo':
