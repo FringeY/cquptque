@@ -395,11 +395,19 @@ class IndexController extends Controller {
 						}
 						if($tmp = D('wx_user')->where("wx_id='$openId'")->find()){
 							$data['userInfo'] = $tmp;
-                            $b=$tmp['avgGrade'];
-							if($b>=30){
-								$honor='好学小';
+                            $b=$tmp['rate'];
+							if($b>=90){
+								$honor='重邮博士后';
+							}else if($b>=80){
+								$honor='重邮大学士';
+							}else if($b>=60){
+								$honor='重邮本科喵';
+							}else if($b>=50){
+								$honor='重邮高中生';
+							}else if($b>=30){
+								$honor='重邮初中生';
 							}else{
-
+								$honor='重邮小学生';
 							}
 							$data['honor']=$honor;
 						}else{

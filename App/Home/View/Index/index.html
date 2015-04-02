@@ -38,6 +38,7 @@
 	var name = "姓名";
 	var table_id = "";
 	var openId = "{$openId}";//ouRCyjhbyphqHJ0P_pa8wvhmEJ9A
+	var honor = "";
 	var winWidth = $(window).width(); //屏幕宽度
 	var running = false;//动画是否进行
 	var pagenum = 0; //页面位置
@@ -253,6 +254,7 @@
 				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
 				$('.name').html(data.userInfo.name);
 				$('.honor').html('头&nbsp;&nbsp;&nbsp;&nbsp;衔：'+data.userInfo.honor);
+				honor = data.userInfo.honor;
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
 				var queA = data.data[0].rightNum;
@@ -415,7 +417,7 @@
 	});
 	wx.onMenuShareAppMessage({
 	    title: '重邮问问答', // 分享标题
-	    desc: '重邮问问答', // 分享描述
+	    desc: '我在重邮问问答取得了”'+honor+'“称号，快来挑战我吧！', // 分享描述
 	    link: window.location.href, // 分享链接
 	    imgUrl: 'img/logo.png', // 分享图标
 	    type: 'link', // 分享类型,music、video或link，不填默认为link
