@@ -393,7 +393,7 @@ class IndexController extends Controller {
 
 						for ($i=1; $i < 5; $i++) { 
 							if($tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=$i")->find()){
-								data['data'][] = $tmp;
+								$data['data'][] = $tmp;
 							}else{
 								$tmp['grade'] = "0";
 								$tmp['que_type'] = $i;
