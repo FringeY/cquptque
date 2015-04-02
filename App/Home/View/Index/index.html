@@ -203,7 +203,7 @@
 		}
 	}
 	//ansBtn
-	
+	var queA,queB,queC,queD;
 	//上传答案
 	function upAns(){
 		$.ajax({
@@ -258,13 +258,13 @@
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
 				
-				var queA = data.que0.rightNum;
+				queA = data.que0.rightNum;
 			
-				var queB = data.que1.rightNum;
+				queB = data.que1.rightNum;
 				
-				var queC = data.que2.rightNum;
+				queC = data.que2.rightNum;
 				
-				var queD = data.que3.rightNum;
+				queD = data.que3.rightNum;
 				
 				draw(queA,queB,queC,queD);
 				// $('.rankTop');
