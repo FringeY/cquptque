@@ -391,7 +391,7 @@ class IndexController extends Controller {
 						unset($data['data']);
 						$data['status']=200;
 						foreach($tmp as $key => $value){
-							$data['data'][] = $value;
+							$data['que'+$key] = $value;
 						}
 						if($tmp = D('wx_user')->where("wx_id='$openId'")->find()){
 							$data['userInfo'] = $tmp;
