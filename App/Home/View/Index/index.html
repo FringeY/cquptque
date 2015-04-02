@@ -250,8 +250,8 @@
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
-				
-				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
+				var imgSrc = data.userInfo.img_src.substr(data.userInfo.img_src.length-1,data.userInfo.img_src.length)+'64';
+				$('.head').css({'background-image':'url('+imgSrc+')','background-size':'100% 100%'});
 				
 				$('.name').html(data.userInfo.name);
 				
