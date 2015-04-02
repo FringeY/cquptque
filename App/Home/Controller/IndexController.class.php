@@ -392,7 +392,7 @@ class IndexController extends Controller {
 						$data['status']=200;
 						foreach($tmp as $key => $value){
 							if($key == 0){
-								$data['queA'] = $value;
+								// $data['queA'] = $value;
 							}else if($key == 1){
 								$data['queB'] = $value;
 							}else if($key == 2){
