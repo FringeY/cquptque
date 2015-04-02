@@ -267,15 +267,14 @@
 	
 	//
 	function draw(queA,queB,queC,queD){
-		alert(1);
 		var canvas = document.getElementById('canvas');
-		alert(canvas);
 		var back = $('.four');
 		var cwidth = back.width();
 		canvas.setAttribute('width',cwidth);
 		var cheight = back.height();
 		canvas.setAttribute('height',cheight);
 		var ctx = canvas.getContext("2d");;
+		alert(1);
 		ctx.beginPath();
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
@@ -296,7 +295,7 @@
 	    ctx.closePath();
 	    ctx.stroke();
 	    ctx.fill();
-
+	    alert(2);
 	    var size = parseInt($('.four span').css('font-size'));
 		    $('.four span').eq(0).css({'left':cwidth/2-2*size+'px','top':'-2em'});
 		    $('.four span').eq(0).find('h4').html('('+queC.rightNum+')');
