@@ -139,7 +139,7 @@
 					queText += '<div data-id="3" class="ansBtn off"><i>C:</i></div>';
 					queText += '<div data-id="4" class="ansBtn off"><i>D:</i></div></div>';
 			}
-			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas id="canvas"></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
+			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum"></span>道题</h2><h2>获得<span class="endScore"></span>分</h2><h3>当前模式排名<span class="endRank"></span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas id="canvas"></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
 			$('#contain').append(queText);
 			rankInfo();
 			rankEvent();
@@ -305,10 +305,10 @@
 		ctx.beginPath();
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
-	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queC/15);
-	    ctx.lineTo(cwidth/2+cwidth/2*queA/15,cheight/2);
-	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*queD/15);
-	    ctx.lineTo(cwidth/2-cwidth/2*queB/15,cheight/2);
+	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queA/15);
+	    ctx.lineTo(cwidth/2+cwidth/2*queC/15,cheight/2);
+	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*queB/15);
+	    ctx.lineTo(cwidth/2-cwidth/2*queD/15,cheight/2);
 	    ctx.strokeStyle = "#fff";
 	    ctx.moveTo(0,cheight/2);
 	    ctx.lineTo(cwidth,cheight/2);
