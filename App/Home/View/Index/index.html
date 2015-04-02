@@ -251,7 +251,8 @@
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
-				queA = data.queA.rightNum;
+				//queA = data.queA.rightNum;
+				$('.four span').eq(1).find('h4').html('('+data.queA.rightNum+')');
 				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
 				
 				$('.name').html(data.userInfo.name);
@@ -260,11 +261,11 @@
 				honor = data.userInfo.honor;
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
-				queB = data.queB.rightNum;
-				queC = data.queC.rightNum;
-				
-				queD = data.queD.rightNum;
-				
+				//queB = data.queB.rightNum;
+				$('.four span').eq(3).find('h4').html('('+data.queB.rightNum+')');
+				$('.four span').eq(0).find('h4').html('('+data.queC.rightNum+')');
+				//queD = data.queD.rightNum;
+				$('.four span').eq(2).find('h4').html('('+data.queD.rightNum+')');
 				draw(queA,queB,queC,queD);
 				// $('.rankTop');
 				// $('.info');
@@ -304,13 +305,13 @@
 	    ctx.fill();
 	    var size = parseInt($('.four span').css('font-size'));
 		    $('.four span').eq(0).css({'left':cwidth/2-2*size+'px','top':'-2em'});
-		    $('.four span').eq(0).find('h4').html('('+queC+')');
+		    //$('.four span').eq(0).find('h4').html('('+queC+')');
 		    $('.four span').eq(1).css({'right':'-3em','top':cheight/2-size+'px'});
-		    $('.four span').eq(1).find('h4').html('('+queA+')');
+		    //$('.four span').eq(1).find('h4').html('('+queA+')');
 		    $('.four span').eq(2).css({'left':cwidth/2-2.5*size+'px','top':cheight+'px'});
-		    $('.four span').eq(2).find('h4').html('('+queD+')');
+		    //$('.four span').eq(2).find('h4').html('('+queD+')');
 		    $('.four span').eq(3).css({'left':'-3em','top':cheight/2-size+'px'});
-		    $('.four span').eq(3).find('h4').html('('+queB+')');
+		    //$('.four span').eq(3).find('h4').html('('+queB+')');
 	}
 	function rankEvent(){
 		//share
