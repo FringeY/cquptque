@@ -255,8 +255,11 @@
 				$('.honor').html('头&nbsp;&nbsp;&nbsp;&nbsp;衔：'+data.userInfo.honor);
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
-				alert(data.data[0].rightNum);
-				draw(data.data[0],data.data[1],data.data[2],data.data[3])
+				var queA = data.data[0].rightNum;
+				var queB = data.data[0].rightNum;
+				var queC = data.data[0].rightNum;
+				var queD = data.data[0].rightNum;
+				draw(queA,queB,queC,queD);
 				// $('.rankTop');
 				// $('.info');
 			},
@@ -279,19 +282,13 @@
 		ctx.beginPath();
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
-		alert(cwidth);
-		alert(queC.rightNum);
-		alert(cheight/2-cwidth/2*parseInt(queC.rightNum)/15);
-	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queC.rightNum/15);
-	    alert(cheight/2-cwidth/2*queC.rightNum/15);
-	    ctx.lineTo(cwidth/2+cwidth/2*(queA.rightNum)/15,cheight/2);
-	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*(queD.rightNum)/15);
-	    ctx.lineTo(cwidth/2-cwidth/2*queB.rightNum/15,cheight/2);
-	    alert(2);
+	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queC/15);
+	    ctx.lineTo(cwidth/2+cwidth/2*queA/15,cheight/2);
+	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*queD/15);
+	    ctx.lineTo(cwidth/2-cwidth/2*queB/15,cheight/2);
 	    ctx.strokeStyle = "#fff";
 	    ctx.moveTo(0,cheight/2);
 	    ctx.lineTo(cwidth,cheight/2);
-	    alert(3);
 	    ctx.strokeStyle = "#fff";
 	    ctx.moveTo(cwidth/2,0);
 	    ctx.lineTo(cwidth/2,cheight);
