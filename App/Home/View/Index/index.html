@@ -207,7 +207,7 @@
 	function upAns(){
 		$.ajax({
 			type: 'post',
-			url: 'Home/index/answerApi',
+			url: '<php>echo U("Home:index/answerApi");</php>',
 			data: 'type=getGrade&key=86b4359bdfdefb5b21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId,
 			success: function(data){
 				console.log(data);
@@ -227,7 +227,7 @@
 		//draw();
 		$.ajax({
 			type: 'post',
-			url: 'Home/index/userInfo',
+			url: '<php>echo U("Home:index/userInfo");</php>',
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=rankAll',
 			success: function(data){
 				console.log(data);
@@ -246,7 +246,7 @@
 		});
 		$.ajax({
 			type: 'post',
-			url: 'Home/index/userInfo',
+			url: '<php>echo U("Home:index/userInfo");</php>',
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
@@ -266,7 +266,7 @@
 		});
 		$.ajax({
 			type: 'post',
-			url: 'Home/index/userInfo',
+			url: '<php>echo U("Home:index/userInfo");</php>',
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=four',
 			success: function(data){
 				console.log(data);
