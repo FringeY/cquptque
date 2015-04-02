@@ -409,7 +409,7 @@ class IndexController extends Controller {
 							}else{
 								$honor='重邮小学生';
 							}
-							$data['honor']=$honor;
+							$data['userInfo']['honor']=$honor;
 						}else{
 							$data = array(
 								'data'=>'拿取用户错误！',
