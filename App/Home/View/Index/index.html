@@ -75,8 +75,7 @@
 			pushData.push(data);
 			last = 0;
 			if(pagenum == 16){
-				upAns(pushData);
-				move();
+				upAns();
 			}else{
 				move();
 			}
@@ -187,7 +186,6 @@
 							pushData.push(data);
 							last = 0;
 							if(pagenum == 16){
-								
 								upAns();
 							}else{
 								move();
@@ -217,6 +215,7 @@
 				$('.endScore').html(data.grade);
 				$('.trueNum').html(data.num);
 				move();
+				rankInfo();
 			},
 			error: function(data){
 				alert('提交失败');
