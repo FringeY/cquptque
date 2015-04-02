@@ -301,7 +301,8 @@
 		canvas.setAttribute('width',cwidth);
 		var cheight = back.height();
 		canvas.setAttribute('height',cheight);
-		var ctx = canvas.getContext("2d");;
+		var ctx = canvas.getContext("2d");
+		ctx.clearRect(0,0,cwidth,cheight);
 		ctx.beginPath();
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
