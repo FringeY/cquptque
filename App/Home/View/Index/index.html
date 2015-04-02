@@ -374,7 +374,7 @@
 					url: 'index.php?s=/Home/index/userInfo',
 					data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 					success: function(data){
-						draw(data.data[0],data.data[1],data.data[2],data.data[3])
+						draw(queA,queB,queC,queD);
 						// $('.rankTop');
 						// $('.info');
 					},
@@ -517,7 +517,7 @@
 // 		}
 // 	}
 // 	xhr.open("post","http://localhost/cqQue/index.php?s=home/index/questionApi",true);
-// 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+// 	xhr.setRequester("Content-Type","application/x-www-form-urlencoded");
 // 	xhr.send("type=getContent&key=86b4359bdfdefb5b21d6260476087062");
 // 	//
 // 	function writeData(){
