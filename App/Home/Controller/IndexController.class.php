@@ -218,7 +218,7 @@ class IndexController extends Controller {
 			if(D('wx_user')->where("wx_id='$openId'")->find()){
 				
 			}else{
-				$data['add']=true;
+				$data['add']='true';
 				$this->addUser($openId);
 			}
 			
@@ -317,8 +317,8 @@ class IndexController extends Controller {
 		return $tmp;
 	}
 	
-	public function addUser($openId){
-		$tmp=$this->backAppInfo($openId);
+	public function addUser($openId='ouRCyjhbyphqHJ0P_pa8wvhmEJ9A'){
+		$tmp=$this->backUserInfo($openId);
 		$add = array(
 			'wx_id'=>$tmp['data']['openid'],
 			'name'=>$tmp['data']['nickname'],
