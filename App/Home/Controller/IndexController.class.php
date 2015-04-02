@@ -176,7 +176,7 @@ class IndexController extends Controller {
 			&&
 			(I('post.key') == md5('cqupt_question'))  //密文:86b4359bdfdefb5b21d6260476087062
 			&&
-			($content = I('post.content','',false))
+			($content = I('post.content','','stripcslashes')
 			&&
 			($table_id = I('post.tableId'))
 			&&
@@ -195,7 +195,8 @@ class IndexController extends Controller {
 			$count = 0;
 			$all=count($arr);
 			if($all!=$this->queNum){
-				$data['data']='num is wromg';
+				$data['data']='num is wromg'.$arr;
+
 				$this->ajaxReturn($data);
 				exit();
 			}
