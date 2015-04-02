@@ -378,15 +378,15 @@ class IndexController extends Controller {
 						'status' => 200
 					);
 					break;
-					
-				case 'userInfo':
+
+				case 'four':
 					if(D('wx_user')->where("wx_id='$openId'")->find()){
 						
 					}else{
 						$data['add']=true;
 						$this->addUser($openId);
 					}
-				    	$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId'")->select();
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId'")->select();
 				    
 						unset($data['data']);
 						$data['status']=200;
@@ -400,8 +400,31 @@ class IndexController extends Controller {
 							}else{
 								$data['queD'] = $value;
 							}
-								
 						}
+					break;
+				case 'userInfo':
+					if(D('wx_user')->where("wx_id='$openId'")->find()){
+						
+					}else{
+						$data['add']=true;
+						$this->addUser($openId);
+					}
+				  //   	$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId'")->select();
+				    
+						// unset($data['data']);
+						// $data['status']=200;
+						// foreach($tmp as $key => $value){
+						// 	if($key == 0){
+						// 		$data['queA'] = $value;
+						// 	}else if($key == 1){
+						// 		$data['queB'] = $value;
+						// 	}else if($key == 2){
+						// 		$data['queC'] = $value;
+						// 	}else{
+						// 		$data['queD'] = $value;
+						// 	}
+								
+						// }
 						if($tmp = D('wx_user')->where("wx_id='$openId'")->find()){
 							$data['userInfo'] = $tmp;
                             $b=$tmp['rate'];
