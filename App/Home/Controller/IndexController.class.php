@@ -381,17 +381,24 @@ class IndexController extends Controller {
 				case 'userInfo':
 				    if(!$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId'")->select()){
 				    	$data = array(
-						'data'=>'未找到此人！',
-						'status' => 441
-					);
+							'data'=>'未找到此人！',
+							'status' => 441
+						);
 				    }else{
-					unset($data['data']);
-					$data['status']=200;
-					foreach($tmp as $key => $value){
-						$data['data'][] = $value;
-					}
-					$tmp = D('wx_user')->where("wx_id='$openId'")->find();
-					$data['userInfo'] = $tmp;
+						unset($data['data']);
+						$data['status']=200;
+						foreach($tmp as $key => $value){
+							$data['data'][] = $value;
+						}
+						if($tmp = D('wx_user')->where("wx_id='$openId'")->find()){
+							$data['userInfo'] = $tmp;
+						}else{
+							$data = array(
+								'data'=>'拿取用户错误！',
+								'status' => 444
+							);
+						}
+						
 					}
 					break;
 					
