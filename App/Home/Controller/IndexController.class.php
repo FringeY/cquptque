@@ -386,21 +386,32 @@ class IndexController extends Controller {
 						$data['add']=true;
 						$this->addUser($openId);
 					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId'")->select();
+					
 				    
 						unset($data['data']);
 						$data['status']=200;
 
-						foreach ($tmp as $key => $value) {
-							if($value){
-								$data['data'][] = $value;
+						for ($i=1; $i < 5; $i++) { 
+							if($tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=$i")->find()){
+								data['data'][] = $tmp;
 							}else{
-								$kong['grade'] = "0";
-								$kong['que_type'] = $i+1;
-								$kong['rightNum'] = "0";	
-								$data['data'][] = $kong;
+								$tmp['grade'] = "0";
+								$tmp['que_type'] = $i;
+								$tmp['rightNum'] = "0";	
+								$data['data'][] = $tmp;
 							}
 						}
+
+						// foreach ($tmp as $key => $value) {
+						// 	if($value){
+						// 		$data['data'][] = $value;
+						// 	}else{
+						// 		$kong['grade'] = "0";
+						// 		$kong['que_type'] = $i+1;
+						// 		$kong['rightNum'] = "0";	
+						// 		$data['data'][] = $kong;
+						// 	}
+						// }
 						
 						
 					break;
