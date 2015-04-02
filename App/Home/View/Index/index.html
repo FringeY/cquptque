@@ -148,7 +148,7 @@
 		}else{
 			$.ajax({
 				type: 'post',
-				url: '<php>echo U("Home:index/answerApi");</php>',
+				url: '<php>echo U("Home:index/questionApi");</php>',
 				data: 'type=getContent&key=86b4359bdfdefb5b21d6260476087062&tableId='+data,
 				success: function(data){
 					$.each(data.data,function(index,element){
@@ -371,7 +371,7 @@
 				$('.rankTop').css('display','none');
 				$.ajax({
 					type: 'post',
-					url: '<php>echo U("Home:index/answerApi");</php>',
+					url: '<php>echo U("Home:index/userInfo");</php>',
 					data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 					success: function(data){
 						draw(queA,queB,queC,queD);
