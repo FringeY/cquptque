@@ -390,8 +390,13 @@ class IndexController extends Controller {
 				    
 						unset($data['data']);
 						$data['status']=200;
-						$data['que'] = $tmp;
-						$data['que']['rightNum'] += 1;	
+						if($tmp){
+							$data['que'] = $tmp
+						}else{
+							$data['que']['grade'] = "0";
+							$data['que']['que_type'] = "1";
+							$data['que']['rightNum'] = "0";	
+						}
 						
 					break;
 				case 'two':
@@ -405,8 +410,13 @@ class IndexController extends Controller {
 				    
 						unset($data['data']);
 						$data['status']=200;
-						$data['que'] = $tmp;
-						$data['que']['rightNum'] += 1;	
+						if($tmp){
+							$data['que'] = $tmp
+						}else{
+							$data['que']['grade'] = "0";
+							$data['que']['que_type'] = "2";
+							$data['que']['rightNum'] = "0";	
+						}
 					break;
 				case 'three':
 					if(D('wx_user')->where("wx_id='$openId'")->find()){
@@ -419,8 +429,13 @@ class IndexController extends Controller {
 				    
 						unset($data['data']);
 						$data['status']=200;
-						$data['que'] = $tmp;
-						$data['que']['rightNum'] += 1;	
+						if($tmp){
+							$data['que'] = $tmp
+						}else{
+							$data['que']['grade'] = "0";
+							$data['que']['que_type'] = "3";
+							$data['que']['rightNum'] = "0";	
+						}
 					break;
 				case 'four':
 					if(D('wx_user')->where("wx_id='$openId'")->find()){
@@ -433,8 +448,14 @@ class IndexController extends Controller {
 				    
 						unset($data['data']);
 						$data['status']=200;
-						$data['que'] = $tmp;
-						$data['que']['rightNum'] += 1;	
+						if($tmp){
+							$data['que'] = $tmp
+						}else{
+							$data['que']['grade'] = "0";
+							$data['que']['que_type'] = "4";
+							$data['que']['rightNum'] = "0";	
+						}
+						
 					break;
 				case 'userInfo':
 					if(D('wx_user')->where("wx_id='$openId'")->find()){
