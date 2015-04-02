@@ -251,7 +251,7 @@
 			success: function(data){
 				console.log(data);
 				var imgSrc = data.userInfo.img_src.substr(0,data.userInfo.img_src.length-1)+'96';
-				$('.head').css({'background-image':'url('+imgSrc+')','background-size':'100% 100%'});
+				$('.head').css({'background':'url('+imgSrc+')','background-size':'100% 100%'});
 				
 				$('.name').html(data.userInfo.name);
 				
