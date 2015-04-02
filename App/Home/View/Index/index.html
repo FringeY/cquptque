@@ -275,10 +275,10 @@
 				queB = parseInt(data.data[0].rightNum);
 				queC = parseInt(data.data[3].rightNum);
 				queD = parseInt(data.data[2].rightNum);
-				$('.four span').eq(1).find('h4').html('('+data.data[3].rightNum+')');
+				$('.four span').eq(1).find('h4').html('('+data.data[1].rightNum+')');
 				//queB = data.queB.rightNum;
 				$('.four span').eq(3).find('h4').html('('+data.data[0].rightNum+')');
-				$('.four span').eq(0).find('h4').html('('+data.data[1].rightNum+')');
+				$('.four span').eq(0).find('h4').html('('+data.data[3].rightNum+')');
 				//queD = data.queD.rightNum;
 				$('.four span').eq(2).find('h4').html('('+data.data[2].rightNum+')');
 				draw(queA,queB,queC,queD);
@@ -306,8 +306,8 @@
 		ctx.clearRect(0,0,cwidth,cheight);
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
-	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queA/15*9/10-1);
-	    ctx.lineTo(cwidth/2+cwidth/2*queC/15*9/10+1,cheight/2);
+	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queC/15*9/10-1);
+	    ctx.lineTo(cwidth/2+cwidth/2*queA/15*9/10+1,cheight/2);
 	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*queD/15*9/10+1);
 	    ctx.lineTo(cwidth/2-cwidth/2*queB/15*9/10-1,cheight/2);
 	    ctx.strokeStyle = "#fff";
