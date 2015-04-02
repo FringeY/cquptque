@@ -251,18 +251,17 @@
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
+				queA = data.que0.rightNum;
 				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
+				queB = data.que1.rightNum;
 				$('.name').html(data.userInfo.name);
+				queC = data.que2.rightNum;
 				$('.honor').html('头&nbsp;&nbsp;&nbsp;&nbsp;衔：'+data.userInfo.honor);
 				honor = data.userInfo.honor;
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
-				alert(data.que0.rightNum);
-				queA = data.que0.rightNum;
-				alert(data.que1.rightNum);
-				queB = data.que1.rightNum;
-				alert(data.que1.rightNum);
-				queC = data.que2.rightNum;
+				
+				
 				
 				queD = data.que3.rightNum;
 				
