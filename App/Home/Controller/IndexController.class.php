@@ -386,44 +386,11 @@ class IndexController extends Controller {
 						$data['add']=true;
 						$this->addUser($openId);
 					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=1")->find();
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=1")->find();
 				    
 						unset($data['data']);
 						$data['status']=200;
-						foreach($tmp as $key => $value){
-							if($key == 0){
-								$data['queA'] = $value;
-							}else if($key == 1){
-								$data['queB'] = $value;
-							}else if($key == 2){
-								$data['queC'] = $value;
-							}else{
-								$data['queD'] = $value;
-							}
-						}
-					break;
-				case 'one':
-					if(D('wx_user')->where("wx_id='$openId'")->find()){
-						
-					}else{
-						$data['add']=true;
-						$this->addUser($openId);
-					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=1")->find();
-				    
-						unset($data['data']);
-						$data['status']=200;
-						foreach($tmp as $key => $value){
-							if($key == 0){
-								$data['queA'] = $value;
-							}else if($key == 1){
-								$data['queB'] = $value;
-							}else if($key == 2){
-								$data['queC'] = $value;
-							}else{
-								$data['queD'] = $value;
-							}
-						}
+						$data['que'] = $tmp;
 					break;
 				case 'two':
 					if(D('wx_user')->where("wx_id='$openId'")->find()){
@@ -432,7 +399,7 @@ class IndexController extends Controller {
 						$data['add']=true;
 						$this->addUser($openId);
 					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=2")->find();
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=2")->find();
 				    
 						unset($data['data']);
 						$data['status']=200;
@@ -445,7 +412,7 @@ class IndexController extends Controller {
 						$data['add']=true;
 						$this->addUser($openId);
 					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=3")->find();
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=3")->find();
 				    
 						unset($data['data']);
 						$data['status']=200;
@@ -458,7 +425,7 @@ class IndexController extends Controller {
 						$data['add']=true;
 						$this->addUser($openId);
 					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and type=4")->find();
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=4")->find();
 				    
 						unset($data['data']);
 						$data['status']=200;
