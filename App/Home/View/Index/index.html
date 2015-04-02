@@ -253,15 +253,15 @@
 				console.log(data);
 				queA = data.queA.rightNum;
 				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
-				queB = data.queB.rightNum;
+				
 				$('.name').html(data.userInfo.name);
-				queC = data.queC.rightNum;
+				
 				$('.honor').html('头&nbsp;&nbsp;&nbsp;&nbsp;衔：'+data.userInfo.honor);
 				honor = data.userInfo.honor;
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
-				
-				
+				queB = data.queB.rightNum;
+				queC = data.queC.rightNum;
 				
 				queD = data.queD.rightNum;
 				
