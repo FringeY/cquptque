@@ -379,64 +379,6 @@ class IndexController extends Controller {
 					);
 					break;
 
-				case 'one':
-					if(D('wx_user')->where("wx_id='$openId'")->find()){
-						
-					}else{
-						$data['add']=true;
-						$this->addUser($openId);
-					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=1")->find();
-				    
-						unset($data['data']);
-						$data['status']=200;
-						if($tmp){
-							$data['que'] = $tmp;
-						}else{
-							$data['que']['grade'] = "0";
-							$data['que']['que_type'] = "1";
-							$data['que']['rightNum'] = "0";	
-						}
-						
-					break;
-				case 'two':
-					if(D('wx_user')->where("wx_id='$openId'")->find()){
-						
-					}else{
-						$data['add']=true;
-						$this->addUser($openId);
-					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=2")->find();
-				    
-						unset($data['data']);
-						$data['status']=200;
-						if($tmp){
-							$data['que'] = $tmp;
-						}else{
-							$data['que']['grade'] = "0";
-							$data['que']['que_type'] = "2";
-							$data['que']['rightNum'] = "0";	
-						}
-					break;
-				case 'three':
-					if(D('wx_user')->where("wx_id='$openId'")->find()){
-						
-					}else{
-						$data['add']=true;
-						$this->addUser($openId);
-					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=3")->find();
-				    
-						unset($data['data']);
-						$data['status']=200;
-						if($tmp){
-							$data['que'] = $tmp;
-						}else{
-							$data['que']['grade'] = "0";
-							$data['que']['que_type'] = "3";
-							$data['que']['rightNum'] = "0";	
-						}
-					break;
 				case 'four':
 					if(D('wx_user')->where("wx_id='$openId'")->find()){
 						
@@ -444,17 +386,20 @@ class IndexController extends Controller {
 						$data['add']=true;
 						$this->addUser($openId);
 					}
-						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId' and que_type=4")->find();
+						$tmp =D('reply')->field('que_type,rightNum,grade')->where("wx_id='$openId'")->select();
 				    
 						unset($data['data']);
 						$data['status']=200;
-						if($tmp){
-							$data['que'] = $tmp;
-						}else{
-							$data['que']['grade'] = "0";
-							$data['que']['que_type'] = "4";
-							$data['que']['rightNum'] = "0";	
+						foreach ($tmp as $key => $value) {
+							if($value){
+								$data[$i] = $value;
+							}else{
+								$data[$i]['grade'] = "0";
+								$data[$i]['que_type'] = $i+1;
+								$data[$i]['rightNum'] = "0";	
+							}
 						}
+						
 						
 					break;
 				case 'userInfo':
