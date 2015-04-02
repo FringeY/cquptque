@@ -8,7 +8,29 @@ class IndexController extends Controller {
 	private $wx_url = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/';
 	
 	public function index(){
-		$openId = I('get.id');
+		//$openId = I('get.id');
+		$CODE = I('get.code');
+		$state = I('get.state');
+		$APPID='';
+		$SECRET='';
+		
+		
+	
+		/*$web="https://api.weixin.qq.com/sns/oauth2/access_token?appid=$APPID&secret=$SECRET&code=$CODE&grant_type=authorization_code";
+		$acess_code = json_decode($this->curl_api($web,''),true);
+		$refresh_token = $acess_code['refresh_token'];
+		/*第二步认证acess_token*/
+		/*$web="https://api.weixin.qq.com/sns/oauth2/access_token?appid=$APPID&secret=$SECRET&code=$CODE&grant_type=authorization_code";
+		$acess_code = json_decode($this->curl_api($web,''),true);
+		$refresh_token = $acess_code['refresh_token'];*/
+		
+		/*刷新acess_token*/
+		/*$web="https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=$APPID&grant_type=$refresh_token&refresh_token=REFRESH_TOKEN";
+		$acess_code2 = json_decode($this->curl_api($web,''),true);*/
+		
+		
+		
+		//exit($code.$state);
 		
 		$time=time();
 		$str = 'abcdefghijklnmopqrstwvuxyz1234567890ABCDEFGHIJKLNMOPQRSTWVUXYZ';
@@ -19,14 +41,27 @@ class IndexController extends Controller {
 		}
 		$secret =sha1(sha1($time).md5($string)."redrock");
 		$web=$this->wx_url.'userInfo';
-		$find=array(
+		$t2=array(
 			'timestamp'=>$time,
 			'string'=>$string,
 			'secret'=>$secret,
 			'token'=>$this->acess_token,
+			'code' => $CODE,
 		);
+		$url2=$this->wx_url."webOauth";
+		$find =array(
+			'timestamp'=>$time,
+			'string'=>$string,
+			'secret'=>$secret,
+			'token'=>$this->acess_token,
+		); 
+		
+		$oa = json_decode($this->curl_api($url2,$t2),true);//new
+		$this->newUser($oa['data']['openId'],$oa);
 		
 		$back = json_decode($this->curl_api($this->wx_url."apiJsTicket",$find),true);
+		/**/
+		
 		$ticket = $back['data'];
 		$timestamp=time();
 		
@@ -317,8 +352,19 @@ class IndexController extends Controller {
 		return $tmp;
 	}
 	
-	public function addUser($openId='ouRCyjhbyphqHJ0P_pa8wvhmEJ9A'){
+	public function addUser($openId){
 		$tmp=$this->backUserInfo($openId);
+		$add = array(
+			'wx_id'=>$tmp['data']['openid'],
+			'name'=>$tmp['data']['nickname'],
+			'img_src'=>$tmp['data']['headimgurl'],
+			'sex'=>$tmp['data']['sex'],
+		);
+		
+		D('wx_user')->add($add);
+	}
+	
+	public function newUser($openId,$tmp){
 		$add = array(
 			'wx_id'=>$tmp['data']['openid'],
 			'name'=>$tmp['data']['nickname'],
