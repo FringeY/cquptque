@@ -167,21 +167,19 @@ class IndexController extends Controller {
 		$this->ajaxReturn($data);
 	}
 	
-	public function	answerApi(){
-		
-		
-				
+	public function	answerApi(){	
 		if(
 			(I('post.type')== 'getGrade')
 			&&
 			(I('post.key') == md5('cqupt_question'))  //密文:86b4359bdfdefb5b21d6260476087062
 			&&
-			($content = I('post.content','','stripcslashes')
+			($content = I('post.content','','stripcslashes'))
 			&&
 			($table_id = I('post.tableId'))
 			&&
-			($openId = I('post.openId'))/*微信openid*/		
+			($openId = I('post.openId'))
 		){
+
 			//[{"true_ans":"1","qid":"1","costTime":"3"},{"true_ans":"1","qid":"7","costTime":"3"},{"true_ans":"1","qid":"46","costTime":"3"},{"true_ans":"1","qid":"55","costTime":"3"},{"true_ans":"1","qid":"57","costTime":"3"},{"true_ans":"1","qid":"65","costTime":"3"},{"true_ans":"1","qid":"66","costTime":"3"},{"true_ans":"1","qid":"68","costTime":"3"},{"true_ans":"1","qid":"77","costTime":"3"},{"true_ans":"1","qid":"86","costTime":"3"}]
 			$data = array(
 				'data'=>"您访问的页面不存在",
