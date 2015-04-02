@@ -257,17 +257,15 @@
 				honor = data.userInfo.honor;
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
-				alert(1);
-				var array = data['data'];
-				alert(array);
-				var queA = array[0].rightNum;
-				alert(2);
-				var queB = array[1].rightNum;
-				alert(3);
-				var queC = array[2].rightNum;
-				alert(4);
-				var queD = array[3].rightNum;
-				alert(queA);
+				
+				var queA = data.que0.rightNum;
+			
+				var queB = data.que0.rightNum;
+				
+				var queC = data.que0.rightNum;
+				
+				var queD = data.que0.rightNum;
+				
 				draw(queA,queB,queC,queD);
 				// $('.rankTop');
 				// $('.info');
