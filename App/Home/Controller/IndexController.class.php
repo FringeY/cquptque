@@ -395,6 +395,13 @@ class IndexController extends Controller {
 						}
 						if($tmp = D('wx_user')->where("wx_id='$openId'")->find()){
 							$data['userInfo'] = $tmp;
+                            $b=$tmp['avgGrade'];
+							if($b>=30){
+								$honor='好学小';
+							}else{
+
+							}
+							$data['honor']=$honor;
 						}else{
 							$data = array(
 								'data'=>'拿取用户错误！',
