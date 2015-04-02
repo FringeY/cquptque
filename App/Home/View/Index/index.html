@@ -259,9 +259,9 @@
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
 				alert(1);
 				var queA = data.data[0].rightNum;
-				var queB = data.data[1].rightNum;
-				var queC = data.data[2].rightNum;
-				var queD = data.data[3].rightNum;
+				var queB = data.data[0].rightNum;
+				var queC = data.data[0].rightNum;
+				var queD = data.data[0].rightNum;
 				alert(queA);
 				draw(queA,queB,queC,queD);
 				// $('.rankTop');
