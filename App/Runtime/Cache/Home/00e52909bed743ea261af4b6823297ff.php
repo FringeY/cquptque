@@ -24,10 +24,10 @@
 			<div class="select cell">
 				<div class="goback"></div>
 				<div class="logo"></div>
-				<div class="selectBtn dangtuan" data-type="3"></div>
-				<div class="selectBtn hexin" data-type="4"></div>
-				<div class="selectBtn chuantong" data-type="2"></div>
-				<div class="selectBtn wangluo" data-type="1"></div>
+				<div class="selectBtn dangtuan" data-type="4"></div>
+				<div class="selectBtn hexin" data-type="3"></div>
+				<div class="selectBtn chuantong" data-type="1"></div>
+				<div class="selectBtn wangluo" data-type="2"></div>
 			</div>
 			
 		</div>
@@ -38,6 +38,7 @@
 	var name = "姓名";
 	var table_id = "";
 	var openId = "<?php echo ($openId); ?>";//ouRCyjhbyphqHJ0P_pa8wvhmEJ9A
+	var honor = "";
 	var winWidth = $(window).width(); //屏幕宽度
 	var running = false;//动画是否进行
 	var pagenum = 0; //页面位置
@@ -75,8 +76,7 @@
 			pushData.push(data);
 			last = 0;
 			if(pagenum == 16){
-				upAns(pushData);
-				move();
+				upAns();
 			}else{
 				move();
 			}
@@ -139,7 +139,7 @@
 					queText += '<div data-id="3" class="ansBtn off"><i>C:</i></div>';
 					queText += '<div data-id="4" class="ansBtn off"><i>D:</i></div></div>';
 			}
-			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
+			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum">4</span>道题</h2><h2>获得<span class="endScore">40</span>分</h2><h3>当前模式排名<span class="endRank">50</span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas id="canvas"></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
 			$('#contain').append(queText);
 			rankInfo();
 			rankEvent();
@@ -165,7 +165,7 @@
 					queText += '<div data-id="3" class="ansBtn off"><i>C:</i> '+element.ans_C+'</div>';
 					queText += '<div data-id="4" class="ansBtn off"><i>D:</i> '+element.ans_D+'</div></div>';
 					});
-					queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum"></span>道题</h2><h2>获得<span class="endScore"></span>分</h2><h3>当前模式排名<span class="endRank"></span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
+					queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum"></span>道题</h2><h2>获得<span class="endScore"></span>分</h2><h3>当前模式排名<span class="endRank"></span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas id="canvas"></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
 					console.log(data);
 					$('#contain').append(queText);
 					rankInfo();
@@ -187,7 +187,6 @@
 							pushData.push(data);
 							last = 0;
 							if(pagenum == 16){
-								
 								upAns();
 							}else{
 								move();
@@ -217,6 +216,7 @@
 				$('.endScore').html(data.grade);
 				$('.trueNum').html(data.num);
 				move();
+				rankInfo();
 			},
 			error: function(data){
 				alert('提交失败');
@@ -251,14 +251,87 @@
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
+				
+				//queA = data.queA.rightNum;
+				//$('.four span').eq(1).find('h4').html('('+data.queB.rightNum+')');
 				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
+				
 				$('.name').html(data.userInfo.name);
+				
 				$('.honor').html('头&nbsp;&nbsp;&nbsp;&nbsp;衔：'+data.userInfo.honor);
+				honor = data.userInfo.honor;
 				$('.rate').html('正确率：'+data.userInfo.rate+'%');
 				$('.allscore').html('总分数：'+data.userInfo.avgGrade);
-				draw(data.data[0],data.data[1],data.data[2],data.data[3])
+				//queB = data.queB.rightNum;
+				//$('.four span').eq(3).find('h4').html('('+data.queA.rightNum+')');
+				//$('.four span').eq(0).find('h4').html('('+data.queD.rightNum+')');
+				//queD = data.queD.rightNum;
+				//$('.four span').eq(2).find('h4').html('('+data.queC.rightNum+')');
+				//draw(queB,queA,queD,queC);
 				// $('.rankTop');
 				// $('.info');
+			},
+			error: function(data){
+				alert('提交失败');
+			}
+		});
+		$.ajax({
+			type: 'post',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=one',
+			success: function(data){
+				console.log(data);
+				//alert(data.queB.rightNum);
+				//queA = data.queA.rightNum;
+				//$('.four span').eq(1).find('h4').html('('+data.queB.rightNum+')');
+				//queB = data.queB.rightNum;
+				//$('.four span').eq(3).find('h4').html('('+data.queA.rightNum+')');
+				$('.four span').eq(0).find('h4').html('('+data.queD.rightNum+')');
+				//queD = data.queD.rightNum;
+				//$('.four span').eq(2).find('h4').html('('+data.queC.rightNum+')');
+				//draw(queB,queA,queD,queC);
+				// $('.rankTop');
+				// $('.info');
+			},
+			error: function(data){
+				alert('提交失败');
+			}
+		});
+		$.ajax({
+			type: 'post',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=two',
+			success: function(data){
+				console.log(data);
+				
+				$('.four span').eq(1).find('h4').html('('+data.que.rightNum+')');
+				
+			},
+			error: function(data){
+				alert('提交失败');
+			}
+		});
+		$.ajax({
+			type: 'post',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=three',
+			success: function(data){
+				console.log(data);				
+				$('.four span').eq(2).find('h4').html('('+data.que.rightNum+')');
+				
+			},
+			error: function(data){
+				alert('提交失败');
+			}
+		});
+		$.ajax({
+			type: 'post',
+			url: 'index.php?s=/Home/index/userInfo',
+			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=four',
+			success: function(data){
+				console.log(data);				
+				$('.four span').eq(3).find('h4').html('('+data.que.rightNum+')');
+				
 			},
 			error: function(data){
 				alert('提交失败');
@@ -268,7 +341,7 @@
 	
 	//
 	function draw(queA,queB,queC,queD){
-		var canvas = document.getElementsByTagName('canvas')[0];
+		var canvas = document.getElementById('canvas');
 		var back = $('.four');
 		var cwidth = back.width();
 		canvas.setAttribute('width',cwidth);
@@ -278,15 +351,13 @@
 		ctx.beginPath();
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
-	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*(15-queC.rightNum)/15);
-	    ctx.lineTo(cwidth/2+cwidth/2*(queA.rightNum)/15,cheight/2);
-	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*(queD.rightNum)/15);
-	    ctx.lineTo(cwidth/2-cwidth/2*(15-queB.rightNum)/15,cheight/2);
-	    
+	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queC/15);
+	    ctx.lineTo(cwidth/2+cwidth/2*queA/15,cheight/2);
+	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*queD/15);
+	    ctx.lineTo(cwidth/2-cwidth/2*queB/15,cheight/2);
 	    ctx.strokeStyle = "#fff";
 	    ctx.moveTo(0,cheight/2);
 	    ctx.lineTo(cwidth,cheight/2);
-	    
 	    ctx.strokeStyle = "#fff";
 	    ctx.moveTo(cwidth/2,0);
 	    ctx.lineTo(cwidth/2,cheight);
@@ -295,16 +366,15 @@
 	    ctx.closePath();
 	    ctx.stroke();
 	    ctx.fill();
-
 	    var size = parseInt($('.four span').css('font-size'));
 		    $('.four span').eq(0).css({'left':cwidth/2-2*size+'px','top':'-2em'});
-		    $('.four span').eq(0).find('h4').html('('+queC.rightNum+')');
+		    //$('.four span').eq(0).find('h4').html('('+queC+')');
 		    $('.four span').eq(1).css({'right':'-3em','top':cheight/2-size+'px'});
-		    $('.four span').eq(1).find('h4').html('('+queA.rightNum+')');
+		    //$('.four span').eq(1).find('h4').html('('+queA+')');
 		    $('.four span').eq(2).css({'left':cwidth/2-2.5*size+'px','top':cheight+'px'});
-		    $('.four span').eq(2).find('h4').html('('+queD.rightNum+')');
+		    //$('.four span').eq(2).find('h4').html('('+queD+')');
 		    $('.four span').eq(3).css({'left':'-3em','top':cheight/2-size+'px'});
-		    $('.four span').eq(3).find('h4').html('('+queB.rightNum+')');
+		    //$('.four span').eq(3).find('h4').html('('+queB+')');
 	}
 	function rankEvent(){
 		//share
@@ -414,9 +484,9 @@
 	    }
 	});
 	wx.onMenuShareAppMessage({
-	    title: '重邮问问答', // 分享标题
-	    desc: '重邮问问答', // 分享描述
-	    link: window.location.href, // 分享链接
+	    title: '我在重邮问问答取得了”'+honor+'“称号，快来挑战我吧！', // 分享标题
+	    desc: '我在重邮问问答取得了”'+honor+'“称号，快来挑战我吧！', // 分享描述
+	    link: '', // 分享链接
 	    imgUrl: 'img/logo.png', // 分享图标
 	    type: 'link', // 分享类型,music、video或link，不填默认为link
 	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
