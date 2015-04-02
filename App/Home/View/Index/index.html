@@ -148,7 +148,7 @@
 		}else{
 			$.ajax({
 				type: 'post',
-				url: 'index.php?s=/Home/index/questionApi',
+				url: 'Home/index/questionApi',
 				data: 'type=getContent&key=86b4359bdfdefb5b21d6260476087062&tableId='+data,
 				success: function(data){
 					$.each(data.data,function(index,element){
@@ -207,7 +207,7 @@
 	function upAns(){
 		$.ajax({
 			type: 'post',
-			url: 'index.php?s=/Home/index/answerApi',
+			url: 'Home/index/answerApi',
 			data: 'type=getGrade&key=86b4359bdfdefb5b21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId,
 			success: function(data){
 				console.log(data);
@@ -227,7 +227,7 @@
 		//draw();
 		$.ajax({
 			type: 'post',
-			url: 'index.php?s=/Home/index/userInfo',
+			url: 'Home/index/userInfo',
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=rankAll',
 			success: function(data){
 				console.log(data);
@@ -246,7 +246,7 @@
 		});
 		$.ajax({
 			type: 'post',
-			url: 'index.php?s=/Home/index/userInfo',
+			url: 'Home/index/userInfo',
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
@@ -266,7 +266,7 @@
 		});
 		$.ajax({
 			type: 'post',
-			url: 'index.php?s=/Home/index/userInfo',
+			url: 'Home/index/userInfo',
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=four',
 			success: function(data){
 				console.log(data);
@@ -371,7 +371,7 @@
 				$('.rankTop').css('display','none');
 				$.ajax({
 					type: 'post',
-					url: 'index.php?s=/Home/index/userInfo',
+					url: 'Home/index/userInfo',
 					data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 					success: function(data){
 						draw(queA,queB,queC,queD);
