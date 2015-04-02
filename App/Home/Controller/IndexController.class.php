@@ -393,6 +393,7 @@ class IndexController extends Controller {
 						if($tmp){
 							$data['que'] = $tmp;
 						}else{
+							$data['que'] = $tmp;
 							$data['que']['rightNum'] = '0';	
 						}
 						
@@ -411,6 +412,7 @@ class IndexController extends Controller {
 						if($tmp){
 							$data['que'] = $tmp;
 						}else{
+							$data['que'] = $tmp;
 							$data['que']['rightNum'] = '0';	
 						}
 					break;
@@ -428,6 +430,7 @@ class IndexController extends Controller {
 						if($tmp){
 							$data['que'] = $tmp;
 						}else{
+							$data['que'] = $tmp;
 							$data['que']['rightNum'] = '0';	
 						}
 					break;
@@ -445,6 +448,7 @@ class IndexController extends Controller {
 						if($tmp){
 							$data['que'] = $tmp;
 						}else{
+							$data['que'] = $tmp;
 							$data['que']['rightNum'] = '0';	
 						}
 					break;
