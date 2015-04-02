@@ -251,9 +251,7 @@
 			data: 'key=86b4359bdfdefb5b21d6260476087062&openId='+openId+'&type=userInfo',
 			success: function(data){
 				console.log(data);
-				if(data.queD.rightNum){
-					alert(1);
-				}
+				
 				//queA = data.queA.rightNum;
 				$('.four span').eq(1).find('h4').html('('+data.queB.rightNum+')');
 				$('.head').css({'background-image':'url('+data.userInfo.img_src+')','background-size':'100% 100%'});
