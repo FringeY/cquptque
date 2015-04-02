@@ -390,7 +390,7 @@ class IndexController extends Controller {
 				    
 						unset($data['data']);
 						$data['status']=200;
-						class obj{}
+						class obj{};
 						foreach ($tmp as $key => $value) {
 							if($value){
 								$data['data'][] = $value;
