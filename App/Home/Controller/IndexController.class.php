@@ -169,10 +169,7 @@ class IndexController extends Controller {
 	
 	public function	answerApi(){
 		
-		$data = array(
-					'data'=>"您访问的页面不存在",
-					'status' => 404
-		);
+		
 				
 		if(
 			(I('post.type')== 'getGrade')
@@ -186,7 +183,10 @@ class IndexController extends Controller {
 			($openId = I('post.openId'))/*微信openid*/		
 		){
 			//[{"true_ans":"1","qid":"1","costTime":"3"},{"true_ans":"1","qid":"7","costTime":"3"},{"true_ans":"1","qid":"46","costTime":"3"},{"true_ans":"1","qid":"55","costTime":"3"},{"true_ans":"1","qid":"57","costTime":"3"},{"true_ans":"1","qid":"65","costTime":"3"},{"true_ans":"1","qid":"66","costTime":"3"},{"true_ans":"1","qid":"68","costTime":"3"},{"true_ans":"1","qid":"77","costTime":"3"},{"true_ans":"1","qid":"86","costTime":"3"}]
-			
+			$data = array(
+				'data'=>"您访问的页面不存在",
+				'status' => 404
+			);
 			$arr = json_decode($content,true);
 			$return_table = $this->getTable($table_id);
 			$db = D($return_table);
@@ -195,6 +195,7 @@ class IndexController extends Controller {
 			$count = 0;
 			$all=count($arr);
 			if($all!=$this->queNum){
+				$data['data']='num is wromg';
 				$this->ajaxReturn($data);
 				exit();
 			}
@@ -218,6 +219,7 @@ class IndexController extends Controller {
 			if(D('wx_user')->where("wx_id='$openId'")->find()){
 				
 			}else{
+				$data['add']=true;
 				$this->addUser($openId);
 			}
 			
