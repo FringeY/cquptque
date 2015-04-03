@@ -8,7 +8,7 @@
 	<script src="__PUBLIC__/js/weixin.js"></script>	
 </head>
 <body>
-	<img src="__PUBLIC__/img/back.jpg" style="position:absolute;z-index:-999;">
+	<img src="__PUBLIC__/img/share.jpg" style="position:absolute;z-index:-999;">
 	<div id="point">
 		<div></div>
 	</div>
@@ -303,7 +303,6 @@
 	
 	//
 	function draw(queA,queB,queC,queD){
-		alert(queA);
 		var canvas = document.getElementById('canvas');
 		var back = $('.four');
 		var cwidth = back.width();
@@ -313,7 +312,6 @@
 		var ctx = canvas.getContext("2d");
 		
 		ctx.beginPath();
-		ctx.clearRect(0,0,cwidth,cheight);
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
 	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queC/15*9/10-1);
