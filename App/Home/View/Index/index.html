@@ -424,14 +424,15 @@
     rankEvent();
 
 
-    function Share(t){
-    	this.t = t;
+    function Share(a){
+    	this.a = a;
     }
+    Share.prototype.t = '我正在参与“重邮问问答”微信游戏，你约吗？';
     Share.prototype.get = function() {
-    	return this.t;
+    	return this.prototype.t;
     }
     Share.prototype.set = function(t) {
-    	this.t = t;
+    	this.prototype.t = t;
     }
 
     //微信
