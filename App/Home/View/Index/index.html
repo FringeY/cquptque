@@ -214,7 +214,7 @@
 	}
 	//ansBtn
 
-	var s = new Share('我正在参与“重邮问问答”微信游戏，你约吗？');
+	var s = new Share(document.title);
 
 	//上传答案
 	function upAns(){
@@ -424,15 +424,14 @@
     rankEvent();
 
 
-    function Share(a){
-    	this.a = a;
+    function Share(t){
+    	this.t = t;
     }
-    Share.prototype.t = '我正在参与“重邮问问答”微信游戏，你约吗？';
     Share.prototype.get = function() {
-    	return this.prototype.t;
+    	return this.t;
     }
     Share.prototype.set = function(t) {
-    	this.prototype.t = t;
+    	this.t = t;
     }
 
     //微信
