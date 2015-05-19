@@ -214,6 +214,8 @@ class IndexController extends Controller {
 			($table_id = I('post.tableId'))
 			&&
 			($openId = I('post.openId'))
+			&&
+			($openId = I('post.tel'))
 		){
 
 			//[{"true_ans":"1","qid":"1","costTime":"3"},{"true_ans":"1","qid":"7","costTime":"3"},{"true_ans":"1","qid":"46","costTime":"3"},{"true_ans":"1","qid":"55","costTime":"3"},{"true_ans":"1","qid":"57","costTime":"3"},{"true_ans":"1","qid":"65","costTime":"3"},{"true_ans":"1","qid":"66","costTime":"3"},{"true_ans":"1","qid":"68","costTime":"3"},{"true_ans":"1","qid":"77","costTime":"3"},{"true_ans":"1","qid":"86","costTime":"3"}]
