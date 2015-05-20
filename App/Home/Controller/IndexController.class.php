@@ -94,7 +94,7 @@ class IndexController extends Controller {
 	
 	
 	public function rankTop(){
-		$select = D('rank')->field('name')->order('count desc')->limit(5)->select();
+		$select = D('rank')->field('name,tel')->order('count desc')->limit(5)->select();
 		
 		$this->assign('select',$select);
 		$this->display();
@@ -215,7 +215,7 @@ class IndexController extends Controller {
 			&&
 			($openId = I('post.openId'))
 			&&
-			($openId = I('post.tel'))
+			($tel = I('post.tel'))
 		){
 
 			//[{"true_ans":"1","qid":"1","costTime":"3"},{"true_ans":"1","qid":"7","costTime":"3"},{"true_ans":"1","qid":"46","costTime":"3"},{"true_ans":"1","qid":"55","costTime":"3"},{"true_ans":"1","qid":"57","costTime":"3"},{"true_ans":"1","qid":"65","costTime":"3"},{"true_ans":"1","qid":"66","costTime":"3"},{"true_ans":"1","qid":"68","costTime":"3"},{"true_ans":"1","qid":"77","costTime":"3"},{"true_ans":"1","qid":"86","costTime":"3"}]
@@ -305,6 +305,7 @@ class IndexController extends Controller {
 			$save['rate'] = $rate;
 			$save['allGrade'] = $wx_user_grade;
 			$save['unlock'] = $n;
+			$save['tel'] = $tel;
 			$save['avgGrade'] = $wx_user_grade/$n*(1+$n*1.25/10)*($rate+300)/400;
 			
 			D('wx_user')->where("wx_id='$openId'")->save($save);
