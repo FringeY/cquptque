@@ -422,7 +422,7 @@ class IndexController extends Controller {
 		){
 			switch($type){
 				case 'rankAll':
-					$tmp = D('wx_user')->field('name,allGrade,avgGrade')->order('avgGrade desc')->limit(10)->select();
+					$tmp = D('wx_user')->field('name,allGrade,avgGrade,tel')->order('avgGrade desc')->limit(10)->select();
 					$data = array(
 						'data'=>$tmp,
 						'status' => 200
