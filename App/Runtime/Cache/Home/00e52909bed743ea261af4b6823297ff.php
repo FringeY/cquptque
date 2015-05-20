@@ -2,24 +2,25 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>重邮问问答</title>
+	<title>我正在参与“重邮问问答”微信游戏，你约吗？</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,maximum-scale=1.0" />
-	<link rel="stylesheet" type="text/css" href="/cquptque/Public/css/index.css">
-	<script src="/cquptque/Public/js/weixin.js"></script>	
+	<link rel="stylesheet" type="text/css" href="/cqqueseven/Public/css/index.css">
+	<script src="/cqqueseven/Public/js/weixin.js"></script>	
 </head>
 <body>
 	<div id="point">
 		<div></div>
-	</div>
-	<div style="display:none;background:url(/cquptque/Public/img/back.png)"></div>
+	</div>	
+	<div style="display:none;background:url(/cqqueseven/Public/img/back.png)"></div>
 	<div id="out">
 		<div id="contain">
 			<div class="begin cell">
-				<div class="rule"></div>
+				<img class="rule" src='http://hongyan.cqupt.edu.cn/cquptque/Public/img/rule.png'></img>
 				<div class="beginBtn start"></div>
 				<div class="beginBtn rank"></div>
 				<div class="beginBtn info"></div>
 				<div class="on"></div>
+				<span class="hongyan" style="display:block;position: absolute;bottom: 0px;width: 100%;font-weight: lighter;text-align: center;color: #fff;font-size: 0.8em;">@红岩网校工作站</span>
 			</div>
 			<div class="select cell">
 				<div class="goback"></div>
@@ -28,14 +29,14 @@
 				<div class="selectBtn hexin" data-type="3"></div>
 				<div class="selectBtn chuantong" data-type="1"></div>
 				<div class="selectBtn wangluo" data-type="2"></div>
+				<span class="hongyan" style="display:block;position: absolute;bottom: 0px;width: 100%;font-weight: lighter;text-align: center;color: #fff;font-size: 0.8em;">@红岩网校工作站</span>
 			</div>
 			
 		</div>
-	</div>	
+	</div>
 </body>
-<script src="/cquptque/Public/js/zepto.min.js"></script>
+<script src="/cqqueseven/Public/js/zepto.min.js"></script>
 <script type="text/javascript">
-	var name = "姓名";
 	var table_id = "";
 	var openId = "<?php echo ($openId); ?>";//ouRCyjhbyphqHJ0P_pa8wvhmEJ9A
 	var honor = "";
@@ -48,16 +49,38 @@
 	var queText = ""; //答题页面
 	var animateNum = ['first','second','third','forth','fifth','sixth','seventh','igth','ninth','tenth','eleventh','twelvth','thirteenth','forteenth','fifteenth','sixteenth','seventeenth','eigthteenth']; //对应动画名称
 	var pushData = []; //提交答案
-	var shareScore,shareRank,queA,queB,queC,queD;
+	var shareScore = '';
+	var shareRank = '';
+	var queA = '';
+	var queB = '';
+	var queC = '';
+	var queD = '';
+	var tel_num = '';
 	$('#out').css({'width':$(window).width()+'px','height':$(window).height()+'px'});
 	$('#point').css({'width':$(window).width()+'px','height':$(window).height()+'px','display':'none'});
 	$('.cell').css({'width':$('#out').width()+'px'});
 	//beginGame
 	$('.start').on('touchend',function(){
-		if(!running){
-			move();
-		}
+		var content = '';
+		content += '<div class="alert"><p style="text-align:center;">请输入您的手机号码：</p><input class="tel" type="text" value=""/><div class="button alert_confirm"></div></div>';
+
+		$('body').append(content);
+		$('.alert').css({'left':($(window).width()-$('.alert').width())/2,'top':($(window).height()-$('.alert').height())/2-50});
+		$('.alert_confirm').on('click',function(){
+			if($('.tel').val().replace(/\s/g,'')==''&&$('.tel').val().length()!=11){
+				alert('请输入11位手机号码！');
+			}else{
+				tel_num = $('.tel').val();
+				$('.over').remove();
+				$('.alert').remove();
+				if(!running){
+					move();
+				}
+			}
+		});
 	});
+	//logo 
+	$('.rule').css({'margin-left':(winWidth-$('.rule').width())/2+'px'});
 	//倒计时
 	function time(){
 		$('.timeline').eq(pagenum-2).css({'-webkit-animation':'timeline 15s','animation':'timeline 15s','-o-animation':'timeline 15s','-moz-animation':'timeline 15s'});
@@ -89,7 +112,7 @@
 		if(pagenum==0){
 			pagenum++;
 			$('#contain').css({'left':winLeft + 'px'});
-			$('#out').css({'background':'url(/cquptque/Public/img/back.png)','background-size':'100% 100%'});
+			$('#out').css({'background':'url(/cqqueseven/Public/img/back.png)','background-size':'100% 100%'});
 		}else{
 			$('#contain').css({'-webkit-animation':'move' + animateNum[pagenum] + ' 0.5s','animation':'move' + animateNum[pagenum] + ' 0.5s','-o-animation':'move' + animateNum[pagenum] + ' 0.5s','-moz-animation':'move' + animateNum[pagenum] + ' 0.5s'});
 			pagenum++;
@@ -120,7 +143,7 @@
 		if (!running) {
 			pagenum = 0;
 			$('#contain').css('left','0px');
-			$('#out').css({'background':'url(/cquptque/Public/img/indexbc.png)','background-size':'100% 100%'});
+			$('#out').css({'background':'url(/cqqueseven/Public/img/indexbc.png)','background-size':'100% 100%'});
 		};
 	})
 	//渲染
@@ -140,7 +163,7 @@
 					queText += '<div data-id="3" class="ansBtn off"><i>C:</i></div>';
 					queText += '<div data-id="4" class="ansBtn off"><i>D:</i></div></div>';
 			}
-			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum"></span>道题</h2><h2>获得<span class="endScore"></span>分</h2><h3>当前模式排名<span class="endRank"></span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas id="canvas"></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
+			queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum"></span>道题</h2><h2>获得<span class="endScore"></span>分</h2><h3>当前模式排名<span class="endRank"></span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div><span class="hongyan" style="display:block;position: absolute;bottom: 0px;width: 100%;font-weight: lighter;text-align: center;color: #fff;font-size: 0.8em;">@红岩网校工作站</span></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas id="canvas"></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
 			$('#contain').append(queText);
 			rankInfo();
 			rankEvent();
@@ -166,7 +189,7 @@
 					queText += '<div data-id="3" class="ansBtn off"><i>C:</i> '+element.ans_C+'</div>';
 					queText += '<div data-id="4" class="ansBtn off"><i>D:</i> '+element.ans_D+'</div></div>';
 					});
-					queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum"></span>道题</h2><h2>获得<span class="endScore"></span>分</h2><h3>当前模式排名<span class="endRank"></span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas id="canvas"></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
+					queText +='<div class="end cell"><h1>游戏结束</h1><h2>本次游戏答对<span class="trueNum"></span>道题</h2><h2>获得<span class="endScore"></span>分</h2><h3>当前模式排名<span class="endRank"></span>名</h3><div class="share"></div><div class="again"></div><div class="rank"></div><span class="hongyan" style="display:block;position: absolute;bottom: 0px;width: 100%;font-weight: lighter;text-align: center;color: #fff;font-size: 0.8em;">@红岩网校工作站</span></div><div class="rankInt cell"><div class="time"><div><div class="mine hinfo_on"></div><div class="allrank hrank"></div><div class="again hagain"></div></div></div><div class="info"><div class="share">分 享</div><div class="head"></div><h3 class="name">sdjgisiogj</h3><p><span class="back"></span><span class="honor">头&nbsp;&nbsp;&nbsp;&nbsp;衔：</span></p><p><span class="back"></span><span class="rate">正确率：</span></p><p><span class="back"></span><span class="allscore">总分数：</span></p><h4 class="fourt">综合战斗力</h4><div class="four"><span>党团知识<h4></h4></span><span>网络文明<h4></h4></span><span>核心价值观<h4></h4></span><span>传统文化<h4></h4></span><canvas id="canvas"></canvas></div></div><ul class="rankTop" style="display:none"></ul></div>';
 					console.log(data);
 					$('#contain').append(queText);
 					rankEvent();
@@ -204,28 +227,32 @@
 		}
 	}
 	//ansBtn
-	
+
+	// var s = new Share(document.title);
+
 	//上传答案
 	function upAns(){
 		$.ajax({
 			type: 'post',
 			url: '<?php echo U("Home:index/answerApi"); ?>',
-			data: 'type=getGrade&key=86b4359bdfdefb5b21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId,
+			data: 'type=getGrade&key=86b4359bdfdefb5b21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId+'&tel='+tel_num,
 			success: function(data){
 				console.log(data);
 				$('.endRank').html(data.rank);
 				$('.endScore').html(data.grade);
 				$('.trueNum').html(data.num);
-				alert(1);
-				shareRank = data.userInfo.avgGrade;
-				document.title = '我参与了重邮问问答闯关，排行'+shareRank+'名，你约吗？';
+				shareRank = data.rank;
+				document.title = '我参与了重邮问问答闯关，排第'+shareRank+'名，你约吗？';
 				move();
 				rankInfo();
+				//s.set('我参与了重邮问问答闯关，排行'+shareRank+'名，你约吗？');
 			},
 			error: function(data){
 				alert('提交失败');
 			}
-		})
+		});
+
+
 	}
 	//排行榜及个人信息
 	function rankInfo(){
@@ -298,7 +325,6 @@
 	
 	//
 	function draw(queA,queB,queC,queD){
-		
 		var canvas = document.getElementById('canvas');
 		var back = $('.four');
 		var cwidth = back.width();
@@ -308,13 +334,12 @@
 		var ctx = canvas.getContext("2d");
 		
 		ctx.beginPath();
-		ctx.clearRect(0,0,cwidth,cheight);
 		ctx.strokeStyle = "#4ecfff";
 		ctx.fillStyle = "#4ecfff";
-	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queC/15*9/10-1);
-	    ctx.lineTo(cwidth/2+cwidth/2*queA/15*9/10+1,cheight/2);
-	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*queD/15*9/10+1);
-	    ctx.lineTo(cwidth/2-cwidth/2*queB/15*9/10-1,cheight/2);
+	    ctx.moveTo(cwidth/2,cheight/2-cwidth/2*queC/15*9/10-2);
+	    ctx.lineTo(cwidth/2+cwidth/2*queA/15*9/10+2,cheight/2);
+	    ctx.lineTo(cwidth/2,cheight/2+cwidth/2*queD/15*9/10+2);
+	    ctx.lineTo(cwidth/2-cwidth/2*queB/15*9/10-2,cheight/2);
 	    ctx.strokeStyle = "#fff";
 	    ctx.moveTo(0,cheight/2);
 	    ctx.lineTo(cwidth,cheight/2);
@@ -331,7 +356,7 @@
 		    //$('.four span').eq(0).find('h4').html('('+queC+')');
 		    $('.four span').eq(1).css({'right':'-3em','top':cheight/2-size+'px'});
 		    //$('.four span').eq(1).find('h4').html('('+queA+')');
-		    $('.four span').eq(2).css({'left':cwidth/2-2.5*size+'px','top':cheight+'px'});
+		    $('.four span').eq(2).css({'left':cwidth/2-2.5*size+'px','top':cheight-size+'px'});
 		    //$('.four span').eq(2).find('h4').html('('+queD+')');
 		    $('.four span').eq(3).css({'left':'-3em','top':cheight/2-size+'px'});
 		    //$('.four span').eq(3).find('h4').html('('+queB+')');
@@ -411,6 +436,18 @@
 		})
 	};
     rankEvent();
+
+
+    // function Share(t){
+    // 	this.t = t;
+    // }
+    // Share.prototype.get = function() {
+    // 	return this.t;
+    // }
+    // Share.prototype.set = function(t) {
+    // 	this.t = t;
+    // }
+
     //微信
     wx.config({
 	    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -424,6 +461,7 @@
 	    	'hideMenuItems'
 	    ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 	});
+
 	wx.ready(function(){
 		wx.hideMenuItems({
 		    menuList: [
@@ -431,22 +469,26 @@
 		    	 "menuItem:originPage"
 		    ]
 		});
-		wx.onMenuShareTimeline({
-		    title: '', // 分享标题
-		    link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx81a4a4b77ec98ff4&redirect_uri=http%3A%2F%2Fhongyan.cqupt.edu.cn%2Fcquptque%2FHome%2FIndex%2Findex&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect', // 分享链接
-		    imgUrl: 'http://hongyan.cqupt.edu.cn/cquptque/Public/img/share.jpg', // 分享图标
-		    success: function () { 
-		        // 用户确认分享后执行的回调函数
-		    },
-		    cancel: function () { 
-		        // 用户取消分享后执行的回调函数
-		    }
-		});
+
+		
+		// wx.onMenuShareTimeline({
+		//     title: s.get(), // 分享标题
+		//     link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx81a4a4b77ec98ff4&redirect_uri=http%3A%2F%2Fhongyan.cqupt.edu.cn%2Fcquptque%2FHome%2FIndex%2Findex&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect', // 分享链接
+		//     imgUrl: 'http://hongyan.cqupt.edu.cn/cquptque/Public/img/share.jpg', // 分享图标
+		//     success: function () { 
+		//         // 用户确认分享后执行的回调函数
+		//     },
+		//     cancel: function () { 
+		//         // 用户取消分享后执行的回调函数
+		//     }
+		// });
+
+
 		// wx.onMenuShareAppMessage({
-		//     title: '重邮问问答', // 分享标题
+		//     title: s.get(), // 分享标题
 		//     desc: '我已经成功闯关重邮问问答，快来挑战我吧！', // 分享描述
 		//     link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx81a4a4b77ec98ff4&redirect_uri=http%3A%2F%2Fhongyan.cqupt.edu.cn%2Fcquptque%2FHome%2FIndex%2Findex&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect', // 分享链接
-		//     imgUrl: 'http://hongyan.cqupt.edu.cn/cquptque/Public/img/logo.png', // 分享图标
+		//     imgUrl: 'http://hongyan.cqupt.edu.cn/cquptque/Public/img/share.jpg', // 分享图标
 		//     type: 'link', // 分享类型,music、video或link，不填默认为link
 		//     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 		//     success: function () { 
