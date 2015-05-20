@@ -67,7 +67,7 @@
 		$('body').append(content);
 		$('.alert').css({'left':($(window).width()-$('.alert').width())/2,'top':($(window).height()-$('.alert').height())/2-50});
 		$('.alert_confirm').on('click',function(){
-			if($('.tel').val().replace(/\s/g,'')==''&&$('.tel').val().length()!=11){
+			if($('.tel').val().replace(/\s/g,'')==''&&$('.tel').val().length!=11){
 				alert('请输入11位手机号码！');
 			}else{
 				tel_num = $('.tel').val();
