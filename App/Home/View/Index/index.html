@@ -61,23 +61,9 @@
 	$('.cell').css({'width':$('#out').width()+'px'});
 	//beginGame
 	$('.start').on('touchend',function(){
-		var content = '';
-		content += '<div class="alert"><p style="text-align:center;">请输入您的手机号码：</p><input class="tel" type="text" value=""/><div class="button alert_confirm"></div></div>';
-
-		$('body').append(content);
-		$('.alert').css({'left':($(window).width()-$('.alert').width())/2,'top':($(window).height()-$('.alert').height())/2-50});
-		$('.alert_confirm').on('touchend',function(){
-			if($('.tel').val().replace(/\s/g,'')==''||$('.tel').val().length!=11){
-				alert('请输入11位手机号码！');
-			}else{
-				tel_num = $('.tel').val();
-				$('.over').remove();
-				$('.alert').remove();
-				if(!running){
-					move();
-				}
-			}
-		});
+		if(!running){
+			move();
+		}
 	});
 	//logo 
 	$('.rule').css({'margin-left':(winWidth-$('.rule').width())/2+'px'});
@@ -232,25 +218,40 @@
 
 	//上传答案
 	function upAns(){
-		$.ajax({
-			type: 'post',
-			url: '<php>echo U("Home:index/answerApi");</php>',
-			data: 'type=getGrade&key=86b4359bdfdefb5b21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId+'&tel='+tel_num,
-			success: function(data){
-				console.log(data);
-				$('.endRank').html(data.rank);
-				$('.endScore').html(data.grade);
-				$('.trueNum').html(data.num);
-				shareRank = data.rank;
-				document.title = '我参与了重邮问问答闯关，排第'+shareRank+'名，你约吗？';
-				move();
-				rankInfo();
-				//s.set('我参与了重邮问问答闯关，排行'+shareRank+'名，你约吗？');
-			},
-			error: function(data){
-				alert('提交失败');
+		var content = '';
+		content += '<div class="alert"><p style="text-align:center;">请输入您的手机号码：</p><input class="tel" type="text" value=""/><div class="button alert_confirm"></div></div>';
+
+		$('body').append(content);
+		$('.alert').css({'left':($(window).width()-$('.alert').width())/2,'top':($(window).height()-$('.alert').height())/2-50});
+		$('.alert_confirm').on('touchend',function(){
+			if($('.tel').val().replace(/\s/g,'')==''||$('.tel').val().length!=11){
+				alert('请输入11位手机号码！');
+			}else{
+				tel_num = $('.tel').val();
+				$('.over').remove();
+				$('.alert').remove();
+				$.ajax({
+					type: 'post',
+					url: '<php>echo U("Home:index/answerApi");</php>',
+					data: 'type=getGrade&key=86b4359bdfdefb5b21d6260476087062&tableId='+table_id+'&content='+JSON.stringify(pushData)+'&openId='+openId+'&tel='+tel_num,
+					success: function(data){
+						console.log(data);
+						$('.endRank').html(data.rank);
+						$('.endScore').html(data.grade);
+						$('.trueNum').html(data.num);
+						shareRank = data.rank;
+						document.title = '我参与了重邮问问答闯关，排第'+shareRank+'名，你约吗？';
+						move();
+						rankInfo();
+						//s.set('我参与了重邮问问答闯关，排行'+shareRank+'名，你约吗？');
+					},
+					error: function(data){
+						alert('提交失败');
+					}
+				});
 			}
 		});
+		
 
 
 	}
